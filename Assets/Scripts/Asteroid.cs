@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class Asteroid : MonoBehaviour,IDamageable
+public class Asteroid : MonoBehaviour
 {
-    [SerializeField] private float health = 5;
+    
     private void Start()
     {
         //transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, Vector3.zero));
@@ -14,26 +14,11 @@ public class Asteroid : MonoBehaviour,IDamageable
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IDamageable Damageable = collision.gameObject.GetComponent<IDamageable>();
-     
+        float damage = collision.relativeVelocity.magnitude;
         if (Damageable == null) return;
-        Damageable.TakeDamage();
-      
-    }
-    public  void TakeDamage(float damage = 1)
-    {
+        Damageable.TakeDamage(damage);
        
-        health -= damage;
-        StartCoroutine(DamageEffect());
-        if (health <= 0) Destroy(gameObject,0.1f);
-
-
     }
-    public IEnumerator DamageEffect()
-    {
-        GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().color = Color.white;
-
-    }
+    
    
 }
