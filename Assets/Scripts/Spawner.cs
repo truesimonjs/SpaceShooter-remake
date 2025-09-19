@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
             
         float angle = Random.Range(0, 360);
         Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
-        Instantiate(prefab, quat*Vector3.right * 5, Quaternion.identity);
+        Instantiate(prefab, quat*Vector3.up * 5, Quaternion.identity);
         }
     }
     
