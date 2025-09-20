@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using Unity.Netcode;
 
-public class Gun : MonoBehaviour
+public class Gun : NetworkBehaviour
 {
     public GameObject bulletPrefab;
     [SerializeField] float roundsPerSecond = 2;
@@ -11,17 +12,24 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         fireCD = 1 / roundsPerSecond;
-        if (Input.GetKey(KeyCode.Mouse0)&&Time.time>nextFire)
+        if (Input.GetKey(KeyCode.Mouse0)&&IsOwner&&Time.time>nextFire)
         {
             
-            GameObject bullet = Instantiate(bulletPrefab,transform.position,transform.rotation);
-
-            //bullet.GetComponent<Rigidbody2D>().linearVelocity = transform.parent.GetComponent<Rigidbody2D>().linearVelocity;
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.eulerAngles = new Vector3(0,0,RandomUtils.pointAt(transform.position,mousePos));
-            bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed,ForceMode2D.Impulse);
+            ShootServerRpc(mousePos);
             nextFire = Time.time + fireCD;
 
         }
+    }
+            [ServerRpc]
+    private void ShootServerRpc(Vector3 mousePos)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        //bullet.GetComponent<Rigidbody2D>().linearVelocity = transform.parent.GetComponent<Rigidbody2D>().linearVelocity;
+        transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, mousePos));
+        bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
+        bullet.GetComponent<NetworkObject>().Spawn();
+        
+
     }
 }

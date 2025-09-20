@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     [SerializeField] private float playerSpeed = 3;
     public static PlayerController instance;
@@ -8,15 +9,25 @@ public class PlayerController : MonoBehaviour
     public bool useForces = true;
     public bool inControl = true;
 
-    private void Awake()
+    private void Start()
     {
+        if(!IsOwner)
+        {
+            this.enabled = false;
+            foreach(Transform t in transform)
+            {
+                //Destroy(t.gameObject);
+            }
+            return;
+        }
+      
         instance = this;
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
-        
 
+        Debug.Log(IsOwner);
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (!useForces) transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),0).normalized * playerSpeed * Time.deltaTime;
         

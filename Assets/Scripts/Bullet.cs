@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : NetworkBehaviour
 {
     Vector3 origin;
     private void Start()
@@ -9,7 +10,7 @@ public class Bullet : MonoBehaviour
     }
     void Update()
     {
-        if (Vector3.Distance(transform.position, origin) > 50) Destroy(gameObject);
+        if (Vector3.Distance(transform.position, origin) > 50) DestroyServerRpc();
     }
   
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,7 +19,12 @@ public class Bullet : MonoBehaviour
         
         if (Damageable == null) return;
         Damageable.TakeDamage();
-        Destroy(gameObject);
+        DestroyServerRpc();
+    }
+    [ServerRpc]
+    public void DestroyServerRpc()
+    {
+        GetComponent<NetworkObject>().Despawn(true);
     }
 
 
