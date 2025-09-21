@@ -16,19 +16,20 @@ public class Gun : NetworkBehaviour
         {
             
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            ShootServerRpc(mousePos);
+            ShootRpc(mousePos);
             nextFire = Time.time + fireCD;
 
         }
     }
-            [ServerRpc]
-    private void ShootServerRpc(Vector3 mousePos)
+    [Rpc(SendTo.Everyone)]
+    private void ShootRpc(Vector3 mousePos)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
         //bullet.GetComponent<Rigidbody2D>().linearVelocity = transform.parent.GetComponent<Rigidbody2D>().linearVelocity;
+        bullet.GetComponent<Bullet>().owner =transform.parent.gameObject;
         transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, mousePos));
+        //bullet.GetComponent<NetworkObject>().Spawn();
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
-        bullet.GetComponent<NetworkObject>().Spawn();
         
 
     }

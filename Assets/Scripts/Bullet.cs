@@ -1,28 +1,38 @@
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : NetworkBehaviour
 {
     Vector3 origin;
+    public GameObject owner;
     private void Start()
     {
         origin= transform.position;
+     
     }
     void Update()
     {
-        if (Vector3.Distance(transform.position, origin) > 50) DestroyServerRpc();
+        if (Vector3.Distance(transform.position, origin) > 50) Destroy(gameObject);
     }
   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable Damageable = collision.gameObject.GetComponent<IDamageable>();
+        //if (!IsOwner) return;
         
+        if (collision.gameObject == owner) return;
+        IDamageable Damageable = collision.gameObject.GetComponent<IDamageable>();
         if (Damageable == null) return;
-        Damageable.TakeDamage();
-        DestroyServerRpc();
+        
+        if(NetworkManager.IsServer)Damageable.TakeDamage();
+        Destroy(gameObject);
+        
+      
+        
+        //DestroyRpc();
     }
-    [ServerRpc]
-    public void DestroyServerRpc()
+    [Rpc(SendTo.Server)]
+    public void DestroyRpc()
     {
         GetComponent<NetworkObject>().Despawn(true);
     }
