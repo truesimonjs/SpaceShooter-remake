@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 6419268972260928837}
   - component: {fileID: 169000708755762431}
   - component: {fileID: 7303803515882673389}
+  - component: {fileID: 5838586391794995766}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -229,9 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  playerSpeed: 10
-  useForces: 1
-  inControl: 1
+  shipController: {fileID: 0}
 --- !u!50 &5119326736664512229
 Rigidbody2D:
   serializedVersion: 5
@@ -359,6 +358,22 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
+--- !u!114 &5838586391794995766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719967761301423195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d622bff7357ca764aa7eb6579e0cf24b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  shipSpeed: 3
+  useForces: 1
+  inControl: 1
 --- !u!1 &7021081190914697586
 GameObject:
   m_ObjectHideFlags: 0
