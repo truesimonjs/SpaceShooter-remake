@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5326adf78f04405479be969418f13e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
   fireCD: 0.5
@@ -268,7 +269,7 @@ PolygonCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 0.1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 5ce2d8b9007300a4bb46ea9397497093, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -337,7 +338,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2b63acba67eef4cb0e4b1ce3ef61c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   health: 231346.1
+  healthVariable:
+    m_InternalValue: 19460.18
 --- !u!114 &7303803515882673389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,7 +357,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   NetworkRigidbodyBaseExpanded: 0
   UseRigidBodyForMotion: 0
-  AutoUpdateKinematicState: 0
+  AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
 --- !u!1 &7021081190914697586
 GameObject:
@@ -399,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5326adf78f04405479be969418f13e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
   fireCD: 0.5
@@ -446,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5326adf78f04405479be969418f13e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
   fireCD: 0.5

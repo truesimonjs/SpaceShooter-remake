@@ -11,23 +11,20 @@ public class PlayerController : NetworkBehaviour
 
     private void Start()
     {
+        gameObject.name = GetComponent<NetworkObject>().OwnerClientId.ToString();
+        rb = GetComponent<Rigidbody2D>();
         if(!IsOwner)
         {
-            this.enabled = false;
-            foreach(Transform t in transform)
-            {
-                //Destroy(t.gameObject);
-            }
+     
             return;
         }
       
         instance = this;
-        rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
 
-        Debug.Log(IsOwner);
+       if (!IsOwner)  return; 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (!useForces) transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"),0).normalized * playerSpeed * Time.deltaTime;
         
@@ -36,9 +33,9 @@ public class PlayerController : NetworkBehaviour
     }
     private void FixedUpdate()
     {
-        
-        Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        if (!IsOwner) return;
         if (!useForces) return;
+        Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
           
         if (inControl)rb.AddForce(playerMove * rb.mass * playerSpeed-rb.linearVelocity*rb.mass, ForceMode2D.Impulse);
@@ -54,6 +51,7 @@ public class PlayerController : NetworkBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(gameObject.name + " was hit!");
         //rb.AddTorque(1*Mathf.Deg2Rad  ,ForceMode2D.Impulse);
         inControl = false; 
     }
