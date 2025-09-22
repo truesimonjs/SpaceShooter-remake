@@ -8,7 +8,7 @@ public class Entity : NetworkBehaviour, IDamageable
 
     // [SerializeField] private float health = 5;
     [SerializeField] private float maxHealth = 100;
-    [SerializeField] private NetworkVariable<float> healthVariable = new NetworkVariable<float>(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    [SerializeField] private NetworkVariable<float> healthVariable = new(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
 
 
