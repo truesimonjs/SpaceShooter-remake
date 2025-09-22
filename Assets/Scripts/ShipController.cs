@@ -13,11 +13,11 @@ public class ShipController : NetworkBehaviour
     {
         enabled = IsServer;
         rb = GetComponent<Rigidbody2D>();
-    
 
-       
+
+
     }
-   
+
     [Rpc(SendTo.Server)]
     public void ServerUpdateRpc(Vector3 mousePos)
     {
@@ -26,7 +26,7 @@ public class ShipController : NetworkBehaviour
 
         if (inControl) transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, mousePos));
     }
-   
+
     [Rpc(SendTo.Server)]
     public void AddForceRpc(Vector2 playerMove)
     {

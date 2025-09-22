@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MultiplayerButton : MonoBehaviour
 {
-   public void StartGame(string connectionOption )
+    public void StartGame(string connectionOption)
     {
-        
+
         switch (connectionOption)
         {
             case "host":
@@ -22,6 +22,6 @@ public class MultiplayerButton : MonoBehaviour
         gameObject.SetActive(false);
     }
 
- 
+
 }
 

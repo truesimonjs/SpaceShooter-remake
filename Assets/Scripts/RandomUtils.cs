@@ -18,12 +18,12 @@ public class RandomUtils : MonoBehaviour
         if (triX > 0) result += 180;
         return result;
 
-        
+
     }
 
-    public static Vector3 randomVector3(Vector3 V1,Vector3 V2)
+    public static Vector3 randomVector3(Vector3 V1, Vector3 V2)
     {
-        return new Vector3(Random.Range(V1.x,V2.x),Random.Range(V1.y,V2.y),Random.Range(V1.z,V2.z));
+        return new Vector3(Random.Range(V1.x, V2.x), Random.Range(V1.y, V2.y), Random.Range(V1.z, V2.z));
 
     }
 }

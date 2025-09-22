@@ -1,7 +1,6 @@
-using UnityEngine;
 using Unity.Netcode;
-
 using Unity.Netcode.Components;
+using UnityEngine;
 
 public class ClientNetworkTransform : NetworkTransform
 {
@@ -10,5 +9,5 @@ public class ClientNetworkTransform : NetworkTransform
         return true;
     }
 }
-    
+
 
