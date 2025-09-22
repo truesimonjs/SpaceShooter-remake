@@ -25,17 +25,14 @@ public class Bullet : NetworkBehaviour
         if (Damageable == null) return;
         
         if(NetworkManager.IsServer)Damageable.TakeDamage();
+        //Damageable.TakeDamage();
         Destroy(gameObject);
         
       
         
         //DestroyRpc();
     }
-    [Rpc(SendTo.Server)]
-    public void DestroyRpc()
-    {
-        GetComponent<NetworkObject>().Despawn(true);
-    }
+    
 
 
 

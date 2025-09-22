@@ -19,7 +19,7 @@ public class Spawner : NetworkBehaviour
     }
         public override void OnNetworkSpawn()
         {
-            if (!IsServer) return;
+            if (!IsServer||!enabled) return;
             
             for (int i = 0; i < 10; i++)
             {
@@ -28,6 +28,8 @@ public class Spawner : NetworkBehaviour
                 float angle = Random.Range(0, 360);
                 Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
                GameObject spawnee = Instantiate(prefab, quat * Vector3.up * 5, Quaternion.identity);
+            
+          
             spawnee.GetComponent<NetworkObject>().Spawn();
             }
     }

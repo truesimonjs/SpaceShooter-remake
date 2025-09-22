@@ -1,20 +1,42 @@
 using UnityEngine;
 using System.Collections;
 using Unity.Netcode;
+using UnityEngine.UI;
 
 public class Entity : NetworkBehaviour, IDamageable
 {
 
-    [SerializeField] private float health = 5;
+   // [SerializeField] private float health = 5;
+    [SerializeField]private float maxHealth = 100;
     [SerializeField]private NetworkVariable<float> healthVariable = new NetworkVariable<float>(5,NetworkVariableReadPermission.Everyone,NetworkVariableWritePermission.Owner);
+  
+    
+    
+    private Slider healthSlider;
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner) return;
-        healthVariable.Value = 500;
+
+        healthVariable.OnValueChanged += UpdateHealthBar;
+        NetworkObject.DontDestroyWithOwner = true;
+        healthSlider = GetComponentInChildren<Slider>();
+        if( IsOwner) healthVariable.Value=maxHealth;
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = healthVariable.Value;
+            healthSlider.gameObject.SetActive(healthVariable.Value < maxHealth);
+        }
+       
+      
     }
-    private void Update()
+    private void LateUpdate()
     {
-       health = healthVariable.Value;
+        if (healthSlider == null) return;   
+        healthSlider.transform.parent.rotation = Quaternion.identity;
+    }
+    public void OnDisable()
+    {
+        Debug.Log("entity destroyed");
     }
 
     public void TakeDamage(float damage = 1)
@@ -26,6 +48,7 @@ public class Entity : NetworkBehaviour, IDamageable
         */
        
        TakeDamageRpc(damage);
+        Debug.Log(NetworkObject.DontDestroyWithOwner,gameObject);
 
     }
     [Rpc(SendTo.Owner)]
@@ -34,12 +57,33 @@ public class Entity : NetworkBehaviour, IDamageable
         healthVariable.Value -= damage;
         //health -= damage;
         DamageEffectRpc();
-        if (health <= 0) Destroy(gameObject, 0.1f);
+        
+        if (healthVariable.Value <= 0)
+        {
+            
+            NetworkObject.Despawn();
+            
+
+        }
     }
+
+  
+    
+
+   
     [Rpc(SendTo.Everyone)]
     public void DamageEffectRpc()
     {
         StartCoroutine(DamageEffect());
+       
+    }
+    
+    public void UpdateHealthBar(float previous,float current)
+    {
+        if (healthSlider == null) return;
+        healthSlider.value = healthVariable.Value;
+        healthSlider.gameObject.SetActive(healthVariable.Value < maxHealth);
+
     }
     
     public IEnumerator DamageEffect()
@@ -49,4 +93,6 @@ public class Entity : NetworkBehaviour, IDamageable
         GetComponent<SpriteRenderer>().color = Color.white;
 
     }
+
+
 }
