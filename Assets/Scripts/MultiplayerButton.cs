@@ -21,7 +21,10 @@ public class MultiplayerButton : MonoBehaviour
         }
         gameObject.SetActive(false);
     }
-
+    public void SpawnShip()
+    {
+        PlayerClient.instance.RequestShip();
+    }
 
 }
 

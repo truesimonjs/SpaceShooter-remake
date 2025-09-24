@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  shipController: {fileID: 0}
+  ship: {fileID: 0}
 --- !u!50 &5119326736664512229
 Rigidbody2D:
   serializedVersion: 5
