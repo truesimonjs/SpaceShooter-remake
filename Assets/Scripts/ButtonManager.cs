@@ -22,6 +22,9 @@ public class ButtonManager : MonoBehaviour
             case "client":
                 NetworkManager.Singleton.StartClient();
                 break;
+            case "server":
+                NetworkManager.Singleton.StartServer();
+                break;
             default:
                 Debug.LogError($"{connectionOption} is not a valid connectionoption");
                 break;
