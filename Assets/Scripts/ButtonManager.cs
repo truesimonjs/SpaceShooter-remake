@@ -2,8 +2,15 @@ using System;
 using Unity.Netcode;
 using UnityEngine;
 
-public class MultiplayerButton : MonoBehaviour
+public class ButtonManager : MonoBehaviour
 {
+    public static ButtonManager instance;
+    public GameObject spawnShipButton;
+    public GameObject hostOrClientButtons;
+    private void Awake()
+    {
+        instance = this;
+    }
     public void StartGame(string connectionOption)
     {
 
@@ -19,7 +26,8 @@ public class MultiplayerButton : MonoBehaviour
                 Debug.LogError($"{connectionOption} is not a valid connectionoption");
                 break;
         }
-        gameObject.SetActive(false);
+        hostOrClientButtons.SetActive(false);
+        spawnShipButton.SetActive(true);
     }
     public void SpawnShip()
     {

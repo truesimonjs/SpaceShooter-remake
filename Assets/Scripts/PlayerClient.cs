@@ -18,8 +18,8 @@ public class PlayerClient : NetworkBehaviour
     public void SpawnShipRpc(ulong clientId)
     {
         GameObject shipObject = Instantiate(defaultShipPrefab);
-        shipObject.GetComponent<NetworkObject>().Spawn();
-        //NetworkObjectReference networkObjectReference = shipObject.GetComponent<NetworkObjectReference>();
+        //shipObject.GetComponent<NetworkObject>().Spawn();
+        shipObject.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
         NetworkObjectReference networkObjectReference = new(shipObject);
         GetShipRpc(networkObjectReference, RpcTarget.Single(clientId, RpcTargetUse.Temp));
     }
@@ -30,5 +30,6 @@ public class PlayerClient : NetworkBehaviour
         networkObjectReference.TryGet(out NetworkObject networkObject);
         
         shipController = networkObject.GetComponent<ShipController>();
+        ButtonManager.instance.spawnShipButton.SetActive(false);
     }
 }

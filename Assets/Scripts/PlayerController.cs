@@ -1,5 +1,6 @@
 using Unity.Netcode;
 using Unity.Netcode.Components;
+using Unity.Netcode.Editor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -8,7 +9,6 @@ public class PlayerController : NetworkBehaviour
     //[SerializeField] private float playerSpeed = 3;
     //public static PlayerController instance;
     public ShipController ship;
-
 
     public override void OnNetworkSpawn()
     {
@@ -34,12 +34,14 @@ public class PlayerController : NetworkBehaviour
 
         Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         ship.AddForceRpc(playerMove);
-
-
-
-
     }
-
+    public override void OnNetworkDespawn()
+    {
+        if (IsOwner) 
+        {
+            ButtonManager.instance.spawnShipButton.SetActive(true);
+        }
+    }
 
 
 }

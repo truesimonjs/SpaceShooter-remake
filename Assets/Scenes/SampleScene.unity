@@ -202,8 +202,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2045476360}
-        m_TargetAssemblyTypeName: MultiplayerButton, Assembly-CSharp
+      - m_Target: {fileID: 1082632304}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 5
         m_Arguments:
@@ -859,8 +859,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2045476360}
-        m_TargetAssemblyTypeName: MultiplayerButton, Assembly-CSharp
+      - m_Target: {fileID: 1082632304}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: StartGame
         m_Mode: 5
         m_Arguments:
@@ -921,8 +921,9 @@ GameObject:
   - component: {fileID: 1082632302}
   - component: {fileID: 1082632301}
   - component: {fileID: 1082632300}
+  - component: {fileID: 1082632304}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Buttons manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,6 +1013,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1082632304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1082632299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24872753dd3ad4747869e5a1a1ea7860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnShipButton: {fileID: 1391323858}
+  hostOrClientButtons: {fileID: 2045476356}
 --- !u!1 &1391323858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,7 +1045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1391323859
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1095,8 +1110,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2045476360}
-        m_TargetAssemblyTypeName: MultiplayerButton, Assembly-CSharp
+      - m_Target: {fileID: 1082632304}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
         m_MethodName: SpawnShip
         m_Mode: 1
         m_Arguments:
@@ -1202,7 +1217,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Spawn Ship
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1605,7 +1622,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2045476357}
   - component: {fileID: 2045476358}
-  - component: {fileID: 2045476360}
   m_Layer: 5
   m_Name: Host or client buttons
   m_TagString: Untagged
@@ -1658,18 +1674,6 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 50}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &2045476360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2045476356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24872753dd3ad4747869e5a1a1ea7860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2045702272
 GameObject:
   m_ObjectHideFlags: 0

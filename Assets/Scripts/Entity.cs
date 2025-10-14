@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class Entity : NetworkBehaviour, IDamageable
 {
 
-    // [SerializeField] private float health = 5;
+     [SerializeField] private float healthDebug;
     [SerializeField] private float maxHealth = 100;
-    [SerializeField] private NetworkVariable<float> healthVariable = new(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    [SerializeField] private NetworkVariable<float> healthVariable = new(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
 
 
@@ -19,7 +19,7 @@ public class Entity : NetworkBehaviour, IDamageable
         healthVariable.OnValueChanged += HealthChange;
         NetworkObject.DontDestroyWithOwner = true;
         healthSlider = GetComponentInChildren<Slider>();
-        if (IsOwner) healthVariable.Value = maxHealth;
+        if (IsServer) healthVariable.Value = maxHealth;
         if (healthSlider != null)
         {
             healthSlider.maxValue = maxHealth;
@@ -28,6 +28,10 @@ public class Entity : NetworkBehaviour, IDamageable
         }
 
 
+    }
+    private void Update()
+    {
+        healthDebug = healthVariable.Value;
     }
     private void LateUpdate()
     {
@@ -48,7 +52,7 @@ public class Entity : NetworkBehaviour, IDamageable
 
 
     }
-    [Rpc(SendTo.Owner)]
+    [Rpc(SendTo.Server)]
     public void TakeDamageRpc(float damage = 1)
     {
         healthVariable.Value -= damage;
