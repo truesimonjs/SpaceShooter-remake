@@ -1,19 +1,26 @@
+using System;
 using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Entity : NetworkBehaviour, IDamageable
+public class Entity : MonoBehaviour, IDamageable
 {
 
-     [SerializeField] protected float healthDebug;
      [SerializeField] protected float maxHealth = 100;
-  
-     [SerializeField] private NetworkVariable<float> healthVariable = new(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+     private float health = 100;
+     public float Health { get => health; 
+        set
+        {
+            health = value;
+            HealthChange();
+        }
+    }
 
 
 
     protected Slider healthSlider;
+    /*
     public override void OnNetworkSpawn()
     {
 
@@ -27,13 +34,19 @@ public class Entity : NetworkBehaviour, IDamageable
             healthSlider.value = healthVariable.Value;
             healthSlider.gameObject.SetActive(healthVariable.Value < maxHealth);
         }
-
-
-    }
-    private void Update()
+    } */
+    private void Start()
     {
-        healthDebug = healthVariable.Value;
+
+        healthSlider = GetComponentInChildren<Slider>();
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = health;
+            healthSlider.gameObject.SetActive(health < maxHealth);
+        }
     }
+
     private void LateUpdate()
     {
         if (healthSlider == null) return;
@@ -43,54 +56,18 @@ public class Entity : NetworkBehaviour, IDamageable
 
     public void TakeDamage(float damage = 1)
     {
-        /*
-        health -= damage;
+        
+        Health -= damage;
         StartCoroutine(DamageEffect());
-        if (health <= 0) Destroy(gameObject, 0.1f);
-        */
-
-        TakeDamageRpc(damage);
-
-
-    }
-    [Rpc(SendTo.Server)]
-    public void TakeDamageRpc(float damage = 1)
-    {
-        healthVariable.Value -= damage;
-        //health -= damage;
-        DamageEffectRpc();
-
-        if (healthVariable.Value <= 0)
-        {
-
-
-            Invoke(nameof(Despawn), 0.1f);
-
-
-
-        }
-    }
-    public virtual void Despawn()
-    {
-        NetworkObject.Despawn();
+        if (Health <= 0) Destroy(gameObject, 0.1f);
     }
 
-
-
-
-    [Rpc(SendTo.Everyone)]
-    public void DamageEffectRpc()
-    {
-        StartCoroutine(DamageEffect());
-
-    }
-
-    public void HealthChange(float previous, float current)
+    private void HealthChange()
     {
 
         if (healthSlider == null) return;
-        healthSlider.value = healthVariable.Value;
-        healthSlider.gameObject.SetActive(healthVariable.Value < maxHealth);
+        healthSlider.value = health;
+        healthSlider.gameObject.SetActive(health < maxHealth);
 
     }
 

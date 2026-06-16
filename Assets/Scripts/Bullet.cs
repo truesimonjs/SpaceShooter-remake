@@ -2,7 +2,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bullet : NetworkBehaviour
+public class Bullet : MonoBehaviour
 {
     Vector3 origin;
     public GameObject owner;
@@ -24,7 +24,7 @@ public class Bullet : NetworkBehaviour
         IDamageable Damageable = collision.gameObject.GetComponent<IDamageable>();
         if (Damageable == null) return;
 
-        if (NetworkManager.IsServer) Damageable.TakeDamage();
+        Damageable.TakeDamage();
 
         Destroy(gameObject);
 

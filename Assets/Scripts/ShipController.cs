@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ShipController : NetworkBehaviour
+public class ShipController : MonoBehaviour
 {
     [SerializeField] private float shipSpeed = 3;
     private Rigidbody2D rb;
@@ -10,7 +10,7 @@ public class ShipController : NetworkBehaviour
 
     private void Start()
     {
-        enabled = IsServer;
+     
         rb = GetComponent<Rigidbody2D>();
 
 
