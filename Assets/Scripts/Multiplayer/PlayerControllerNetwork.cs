@@ -3,17 +3,17 @@ using Unity.Netcode.Components;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerControllerNetwork : NetworkBehaviour
 {
     //[SerializeField] private float playerSpeed = 3;
     //public static PlayerController instance;
-    public ShipController ship;
+    public ShipControllerRPC ship;
 
     public override void OnNetworkSpawn()
     {
         gameObject.name = GetComponent<NetworkObject>().OwnerClientId.ToString();
         enabled = IsOwner;
-        if (ship == null) ship = GetComponent<ShipController>();
+        if (ship == null) ship = GetComponent<ShipControllerRPC>();
 
     }
     void Update()
@@ -23,7 +23,7 @@ public class PlayerController : NetworkBehaviour
         Camera.main.orthographicSize += -Input.GetAxis("Mouse ScrollWheel");
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        ship.PointShip(mousePos);
+        ship.PointShipRPC(mousePos);
     }
 
 
@@ -32,7 +32,7 @@ public class PlayerController : NetworkBehaviour
 
 
         Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        ship.MoveShip(playerMove);
+        ship.MoveShipRPC(playerMove);
     }
     public override void OnNetworkDespawn()
     {

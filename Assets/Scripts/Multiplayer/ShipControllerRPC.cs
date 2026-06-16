@@ -1,16 +1,17 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ShipControllerRPC : ShipController
+public class ShipControllerRPC : NetworkBehaviour
 {
+    private ShipController shipController;
     [Rpc(SendTo.Server)]
     public virtual void PointShipRPC(Vector3 targetPos)
     {
-        PointShip(targetPos);
+        shipController.PointShip(targetPos);
     }
     [Rpc(SendTo.Server)]
     public void MoveShipRPC(Vector2 playerMove)
     {
-        MoveShip(playerMove);
+        shipController.MoveShip(playerMove);
     }
 }

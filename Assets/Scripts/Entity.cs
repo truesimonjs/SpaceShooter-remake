@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Entity : NetworkBehaviour, IDamageable
 {
 
-     [SerializeField] private float healthDebug;
-    [SerializeField] private float maxHealth = 100;
-    [SerializeField] private NetworkVariable<float> healthVariable = new(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+     [SerializeField] protected float healthDebug;
+     [SerializeField] protected float maxHealth = 100;
+  
+     [SerializeField] private NetworkVariable<float> healthVariable = new(5, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
 
 
-    private Slider healthSlider;
+    protected Slider healthSlider;
     public override void OnNetworkSpawn()
     {
 
@@ -69,7 +70,7 @@ public class Entity : NetworkBehaviour, IDamageable
 
         }
     }
-    public void Despawn()
+    public virtual void Despawn()
     {
         NetworkObject.Despawn();
     }

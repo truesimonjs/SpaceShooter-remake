@@ -63,9 +63,9 @@ GameObject:
   - component: {fileID: 3677413972362740885}
   - component: {fileID: 5119326736664512229}
   - component: {fileID: 6419268972260928837}
-  - component: {fileID: 169000708755762431}
   - component: {fileID: 7303803515882673389}
   - component: {fileID: 6395959659629607495}
+  - component: {fileID: 3713149402524237765}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -326,23 +326,6 @@ PolygonCollider2D:
       - {x: 0.48, y: -0.29}
       - {x: 0.48, y: -0.12}
   m_UseDelaunayMesh: 0
---- !u!114 &169000708755762431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719967761301423195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc2b63acba67eef4cb0e4b1ce3ef61c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  healthDebug: 0
-  maxHealth: 100
-  healthVariable:
-    m_InternalValue: 19460.18
 --- !u!114 &7303803515882673389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,9 +356,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  shipSpeed: 3
-  useForces: 1
-  inControl: 1
+--- !u!114 &3713149402524237765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719967761301423195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 808270598c14a184ab86e80d6af48cc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  healthDebug: 0
+  maxHealth: 100
+  healthVariable:
+    m_InternalValue: 5
 --- !u!1 &7021081190914697586
 GameObject:
   m_ObjectHideFlags: 0
