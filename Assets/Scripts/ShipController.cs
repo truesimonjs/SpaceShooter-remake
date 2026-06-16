@@ -17,28 +17,28 @@ public class ShipController : NetworkBehaviour
 
     }
 
-    [Rpc(SendTo.Server)]
-    public void ServerUpdateRpc(Vector3 mousePos)
+    public virtual void PointShip(Vector3 targetPos)
     {
-        if (!useForces) transform.position += new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0).normalized * shipSpeed * Time.deltaTime;
-
-
-        if (inControl) transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, mousePos));
+        if (inControl) transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, targetPos));
     }
-
-    [Rpc(SendTo.Server)]
-    public void AddForceRpc(Vector2 playerMove)
+    public virtual void MoveShip(Vector2 playerMove)
     {
-        if (!useForces) return;
-        if (inControl) rb.AddForce(playerMove * rb.mass * shipSpeed - rb.linearVelocity * rb.mass, ForceMode2D.Impulse);
+        if (!useForces) 
+        {
+            transform.position += (Vector3)playerMove * shipSpeed * Time.deltaTime;
+            return;
+        }
+        if (inControl) rb.AddForce(playerMove * rb.mass * shipSpeed - rb.linearVelocity * rb.mass, ForceMode2D.Impulse); //push ship by whatever amount
         if (!inControl)
         {
-            rb.AddForce(-rb.linearVelocity.normalized * rb.mass * shipSpeed);
+            rb.AddForce(-rb.linearVelocity.normalized * rb.mass * shipSpeed); //add normalized force counteracting the current spin, once the spin has been slowed control is regained
 
             inControl = rb.linearVelocity.magnitude < 0.1f;
             if (inControl) rb.angularVelocity = 0;
         }
     }
+
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " was hit!");

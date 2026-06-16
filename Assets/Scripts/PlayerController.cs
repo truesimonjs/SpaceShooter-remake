@@ -23,7 +23,7 @@ public class PlayerController : NetworkBehaviour
         Camera.main.orthographicSize += -Input.GetAxis("Mouse ScrollWheel");
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        ship.ServerUpdateRpc(mousePos);
+        ship.PointShip(mousePos);
     }
 
 
@@ -32,7 +32,7 @@ public class PlayerController : NetworkBehaviour
 
 
         Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        ship.AddForceRpc(playerMove);
+        ship.MoveShip(playerMove);
     }
     public override void OnNetworkDespawn()
     {

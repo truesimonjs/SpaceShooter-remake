@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 6419268972260928837}
   - component: {fileID: 169000708755762431}
   - component: {fileID: 7303803515882673389}
-  - component: {fileID: 5838586391794995766}
+  - component: {fileID: 6395959659629607495}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -339,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  healthDebug: 0
   maxHealth: 100
   healthVariable:
     m_InternalValue: 19460.18
@@ -359,7 +360,7 @@ MonoBehaviour:
   UseRigidBodyForMotion: 0
   AutoUpdateKinematicState: 1
   AutoSetKinematicOnDespawn: 1
---- !u!114 &5838586391794995766
+--- !u!114 &6395959659629607495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -368,7 +369,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6719967761301423195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d622bff7357ca764aa7eb6579e0cf24b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8923b6f4f26c1b1468c98ca64596d19d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
