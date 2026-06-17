@@ -14,13 +14,13 @@ public class Gun : MonoBehaviour
         {
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            ShootRpc(mousePos);
+            Shoot(mousePos);
             nextFire = Time.time + fireCD;
 
         }
     }
 
-    private void ShootRpc(Vector3 mousePos)
+    private void Shoot(Vector3 mousePos)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 

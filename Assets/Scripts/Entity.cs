@@ -51,15 +51,6 @@ public class Entity : MonoBehaviour, IDamageable
         if (Health <= 0) Destroy(gameObject, 0.1f);
     }
 
-    private void HealthChange()
-    {
-
-        if (healthSlider == null) return;
-        healthSlider.value = health;
-        healthSlider.gameObject.SetActive(health < maxHealth);
-
-    }
-
     public IEnumerator DamageEffect()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
