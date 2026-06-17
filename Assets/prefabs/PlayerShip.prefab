@@ -60,8 +60,8 @@ GameObject:
   - component: {fileID: 5119326736664512229}
   - component: {fileID: 6419268972260928837}
   - component: {fileID: -8295051211622515048}
-  - component: {fileID: 428625139473403521}
   - component: {fileID: -2639443711546954101}
+  - component: {fileID: 7456155062057748798}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Player
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6719967761301423195}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
@@ -250,21 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
---- !u!114 &428625139473403521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719967761301423195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d622bff7357ca764aa7eb6579e0cf24b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipSpeed: 3
-  useForces: 1
-  inControl: 1
 --- !u!114 &-2639443711546954101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,6 +262,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee31d239bef02648ae6788274018e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7456155062057748798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719967761301423195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9028b4e921c258d41a9e87a52d0dac0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipSpeed: 3
 --- !u!1 &7021081190914697586
 GameObject:
   m_ObjectHideFlags: 0

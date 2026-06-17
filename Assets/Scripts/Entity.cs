@@ -26,14 +26,10 @@ public class Entity : MonoBehaviour, IDamageable
 
     private void Start()
     {
-
         healthSlider = GetComponentInChildren<Slider>();
-        if (healthSlider != null)
-        {
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = health;
-            healthSlider.gameObject.SetActive(health < maxHealth);
-        }
+        healthSlider.maxValue = maxHealth;
+        Health = maxHealth;
+
     }
 
     private void LateUpdate()

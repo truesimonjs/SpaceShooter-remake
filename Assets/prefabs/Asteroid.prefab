@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 598062963344212087}
   - component: {fileID: 4422442943775752612}
   - component: {fileID: -6200140720405135082}
+  - component: {fileID: 837317144819707091}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -159,7 +160,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9095518914482664920}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
@@ -261,6 +262,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &837317144819707091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9095518914482664920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bd91833e454e34a8bddcd8449e0dfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  destroyOnImpact: 0
+  attackCD: 5
 --- !u!1001 &123706772749495907
 PrefabInstance:
   m_ObjectHideFlags: 0

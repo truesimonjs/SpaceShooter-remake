@@ -11,6 +11,7 @@ public class Asteroid : MonoBehaviour
         //GetComponent<Rigidbody2D>().linearVelocity = -transform.position.normalized;
 
     }
+    /*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         IDamageable Damageable = collision.gameObject.GetComponent<IDamageable>();
@@ -20,5 +21,5 @@ public class Asteroid : MonoBehaviour
 
     }
 
-
+    */
 }
