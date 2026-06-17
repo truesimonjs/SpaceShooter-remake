@@ -4,7 +4,7 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
     [SerializeField] private float spawnDistance = 5;
-    [SerializeField] private float amount = 10;
+    [SerializeField] private uint amount = 10;
     private void Start()
     {
 

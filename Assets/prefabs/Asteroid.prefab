@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2b63acba67eef4cb0e4b1ce3ef61c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 10
 --- !u!114 &837317144819707091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  destroyOnImpact: 0
+  selfDamage: 10
   attackCD: 5
 --- !u!1001 &123706772749495907
 PrefabInstance:

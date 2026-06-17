@@ -14,7 +14,9 @@ public class ShipController : MonoBehaviour
     }
     public virtual void MoveShip(Vector2 direction)
     {
-       rb.linearVelocity = direction*shipSpeed;
+        rb.linearVelocity = Vector2.zero;
+        if (direction.magnitude < 0.5f) return;
+       rb.linearVelocity = direction.normalized*shipSpeed;
     }
 }
 
