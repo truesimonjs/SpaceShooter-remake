@@ -1,4 +1,3 @@
-using Unity.Netcode;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
@@ -10,7 +9,7 @@ public class ShipController : MonoBehaviour
 
     private void Start()
     {
-     
+
         rb = GetComponent<Rigidbody2D>();
 
 
@@ -23,7 +22,7 @@ public class ShipController : MonoBehaviour
     }
     public virtual void MoveShip(Vector2 playerMove)
     {
-        if (!useForces) 
+        if (!useForces)
         {
             transform.position += (Vector3)playerMove * shipSpeed * Time.deltaTime;
             return;
@@ -38,7 +37,7 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " was hit!");

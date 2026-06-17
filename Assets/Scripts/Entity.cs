@@ -1,15 +1,15 @@
-using System;
 using System.Collections;
-using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Entity : MonoBehaviour, IDamageable
 {
 
-     [SerializeField] protected float maxHealth = 100;
-     private float health = 100;
-     public float Health { get => health; 
+    [SerializeField] protected float maxHealth = 100;
+    private float health = 100;
+    public float Health
+    {
+        get => health;
         set
         {
             health = value;
@@ -56,7 +56,7 @@ public class Entity : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage = 1)
     {
-        
+
         Health -= damage;
         StartCoroutine(DamageEffect());
         if (Health <= 0) Destroy(gameObject, 0.1f);

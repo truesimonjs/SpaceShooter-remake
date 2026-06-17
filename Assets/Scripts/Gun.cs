@@ -1,6 +1,4 @@
-using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class Gun : MonoBehaviour
 {
@@ -21,7 +19,7 @@ public class Gun : MonoBehaviour
 
         }
     }
-    
+
     private void ShootRpc(Vector3 mousePos)
     {
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
