@@ -6,6 +6,7 @@ public class Entity : MonoBehaviour, IDamageable
 {
 
     [SerializeField] protected float maxHealth = 100;
+    protected Slider healthSlider;
     private float health = 100;
     public float Health
     {
@@ -19,22 +20,8 @@ public class Entity : MonoBehaviour, IDamageable
 
 
 
-    protected Slider healthSlider;
-    /*
-    public override void OnNetworkSpawn()
-    {
 
-        healthVariable.OnValueChanged += HealthChange;
-        NetworkObject.DontDestroyWithOwner = true;
-        healthSlider = GetComponentInChildren<Slider>();
-        if (IsServer) healthVariable.Value = maxHealth;
-        if (healthSlider != null)
-        {
-            healthSlider.maxValue = maxHealth;
-            healthSlider.value = healthVariable.Value;
-            healthSlider.gameObject.SetActive(healthVariable.Value < maxHealth);
-        }
-    } */
+
     private void Start()
     {
 

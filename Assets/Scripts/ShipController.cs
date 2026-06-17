@@ -20,14 +20,14 @@ public class ShipController : MonoBehaviour
     {
         if (inControl) transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, targetPos));
     }
-    public virtual void MoveShip(Vector2 playerMove)
+    public virtual void MoveShip(Vector2 direction)
     {
         if (!useForces)
         {
-            transform.position += (Vector3)playerMove * shipSpeed * Time.deltaTime;
+            transform.position += (Vector3)direction * shipSpeed * Time.deltaTime;
             return;
         }
-        if (inControl) rb.AddForce(playerMove * rb.mass * shipSpeed - rb.linearVelocity * rb.mass, ForceMode2D.Impulse); //push ship by whatever amount
+        if (inControl) rb.AddForce(direction.normalized * rb.mass * shipSpeed - rb.linearVelocity * rb.mass, ForceMode2D.Impulse); //push ship by whatever amount
         if (!inControl)
         {
             rb.AddForce(-rb.linearVelocity.normalized * rb.mass * shipSpeed); //add normalized force counteracting the current spin, once the spin has been slowed control is regained

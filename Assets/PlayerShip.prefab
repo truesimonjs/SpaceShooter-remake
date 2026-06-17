@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5326adf78f04405479be969418f13e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
   fireCD: 0.5
@@ -65,7 +64,7 @@ GameObject:
   - component: {fileID: -2639443711546954101}
   m_Layer: 6
   m_Name: PlayerShip
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,7 +321,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5326adf78f04405479be969418f13e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
   fireCD: 0.5
@@ -370,7 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5326adf78f04405479be969418f13e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
   fireCD: 0.5
