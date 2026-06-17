@@ -14,7 +14,9 @@ public class Entity : MonoBehaviour, IDamageable
         set
         {
             health = value;
-            HealthChange();
+            if (healthSlider == null) return;
+            healthSlider.value = health;
+            healthSlider.gameObject.SetActive(health < maxHealth);
         }
     }
 
