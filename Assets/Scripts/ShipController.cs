@@ -12,6 +12,10 @@ public class ShipController : MonoBehaviour
     {
         transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, targetPos));
     }
+    public virtual void RotateShip(float eulerAngles)
+    {
+        transform.Rotate(Vector3.forward * eulerAngles);
+    }
     public virtual void MoveShip(Vector2 direction)
     {
         rb.linearVelocity = Vector2.zero;
