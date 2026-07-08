@@ -5,15 +5,24 @@ using UnityEngine;
 public class Arrowindicator : MonoBehaviour
 {
     public Transform targetT;
-    public Transform playerT;
+    //public Transform playerT;
     private void Update()
     {
-        Vector3 direction = targetT.position - transform.localPosition;
-        Vector3 limits = Camera.main.ViewportToWorldPoint(new Vector3(1,1,-10));
+        if (targetT == null) 
+        { 
+            Destroy(gameObject);
+            return;
+        } 
+        Vector3 limitsMax = Camera.main.ViewportToWorldPoint(new Vector3(1,1,0));
+        Vector3 limitsMin = Camera.main.ViewportToWorldPoint(Vector3.zero);
 
-        transform.position = new Vector3(limits.x, limits.y, 0);
-        float newX = Mathf.Abs(targetT.position.x) > limits.x ? limits.x : targetT.position.x;
-        float newY = Mathf.Abs(targetT.position.y) > limits.y ? limits.y : targetT.position.y;
+        float sizeAdjust = transform.localScale.x/2;
+
+
+        float newX = Mathf.Clamp(targetT.position.x, limitsMin.x+sizeAdjust, limitsMax.x-sizeAdjust);
+        float newY = Mathf.Clamp(targetT.position.y, limitsMin.y+sizeAdjust, limitsMax.y-sizeAdjust);
+        bool onScreen = newX == targetT.position.x && newY == targetT.position.y;
+        GetComponentInChildren<SpriteRenderer>().enabled = !onScreen;
         transform.position = new Vector3 (newX, newY, 0);
     }
 
