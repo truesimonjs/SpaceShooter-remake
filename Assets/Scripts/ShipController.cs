@@ -3,6 +3,7 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
     [SerializeField] private float shipSpeed = 3;
+    [SerializeField] private float rotationSpeed = 5;
     private Rigidbody2D rb;
     private void Start()
     {
@@ -10,11 +11,20 @@ public class ShipController : MonoBehaviour
     }
     public virtual void PointShip(Vector3 targetPos)
     {
-        transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, targetPos));
+        float originRot = transform.eulerAngles.z;
+        float targetRot = RandomUtils.pointAt(transform.position, targetPos);
+        float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed*Time.deltaTime);
+        
+        transform.eulerAngles = new Vector3(0, 0, result);
+        
     }
-    public virtual void RotateShip(float eulerAngles)
+    public virtual void RotateShip(float targetRot)
     {
-        transform.Rotate(Vector3.forward * eulerAngles);
+        float originRot = transform.eulerAngles.z;
+        float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed * Time.deltaTime);
+
+        transform.Rotate(Vector3.forward * result);
+        
     }
     public virtual void MoveShip(Vector2 direction)
     {

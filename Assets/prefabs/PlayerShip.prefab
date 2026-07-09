@@ -169,7 +169,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &6419268972260928837
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipSpeed: 3
+  rotationSpeed: 5
 --- !u!1 &7021081190914697586
 GameObject:
   m_ObjectHideFlags: 0
