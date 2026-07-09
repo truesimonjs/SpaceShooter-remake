@@ -15,6 +15,6 @@ public class ImpactShipAi : MonoBehaviour
     private void Update()
     {
         ship.PointShip(playerT.position);
-        ship.MoveShip(playerT.position-transform.position);
+        ship.MoveShip(playerT.position - transform.position);
     }
 }

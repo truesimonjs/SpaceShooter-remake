@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
 
             float angle = Random.Range(0, 360);
             Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
-            Instantiate(prefab, transform.position+ quat * Vector3.up * spawnDistance, Quaternion.identity);
+            Instantiate(prefab, transform.position + quat * Vector3.up * spawnDistance, Quaternion.identity);
 
         }
     }
@@ -22,7 +22,8 @@ public class Spawner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position,spawnDistance);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, spawnDistance);
     }
 }
 

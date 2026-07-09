@@ -25,7 +25,7 @@ public class ShipControllerOld : MonoBehaviour
         if (!useForces)
         {
 
-            Vector2 newPos = rb.position+ direction * shipSpeed * Time.deltaTime;
+            Vector2 newPos = rb.position + direction * shipSpeed * Time.deltaTime;
             rb.MovePosition(newPos);
             return;
         }

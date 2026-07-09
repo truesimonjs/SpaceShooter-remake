@@ -13,10 +13,10 @@ public class ShipController : MonoBehaviour
     {
         float originRot = transform.eulerAngles.z;
         float targetRot = RandomUtils.pointAt(transform.position, targetPos);
-        float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed*Time.deltaTime);
-        
+        float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed * Time.deltaTime);
+
         transform.eulerAngles = new Vector3(0, 0, result);
-        
+
     }
     public virtual void RotateShip(float targetRot)
     {
@@ -24,24 +24,25 @@ public class ShipController : MonoBehaviour
         float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed * Time.deltaTime);
 
         transform.Rotate(Vector3.forward * result);
-        
+
     }
     public virtual void MoveShip(Vector2 direction)
     {
         rb.linearVelocity = Vector2.zero;
         if (direction.magnitude < 0.5f) return;
-       rb.linearVelocity = direction.normalized*shipSpeed;
+        rb.linearVelocity = direction.normalized * shipSpeed;
     }
-    public virtual void MoveTowards(Vector2 destination, float distance = 1)
+    public virtual void MoveTowards(Vector2 destination, float distance = 0.25f)
     {
         Vector3 goal = destination - (Vector2)transform.position;
-        if (goal.magnitude < distance)
+        if (goal.magnitude <= distance)
         {
             MoveShip(Vector2.zero);
-        } else
+        }
+        else
         {
-        PointShip(destination);
-        MoveShip(goal.normalized);
+            PointShip(destination);
+            MoveShip(goal.normalized);
 
         }
     }

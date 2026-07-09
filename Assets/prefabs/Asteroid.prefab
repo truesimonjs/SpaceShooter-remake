@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4422442943775752612}
   - component: {fileID: -6200140720405135082}
   - component: {fileID: 837317144819707091}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,6 +285,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1362374866280755386}
     m_Modifications:
+    - target: {fileID: 1024053641298965635, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409735068985209804, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5321475689488851362, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -412,6 +420,14 @@ PrefabInstance:
     - target: {fileID: 6662951042863381552, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
       propertyPath: m_Name
       value: Healthbar canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6662951042863381552, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198281587951463194, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

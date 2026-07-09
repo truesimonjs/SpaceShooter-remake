@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] protected float maxHealth = 100;
     protected Slider healthSlider;
     private float health = 100;
+    Color normalColor;
     public float Health
     {
         get => health;
@@ -21,14 +22,21 @@ public class Entity : MonoBehaviour, IDamageable
     }
 
 
-
+    private void Awake()
+    {
+        normalColor = GetComponent<SpriteRenderer>().color;
+    }
 
 
     private void Start()
     {
+
         healthSlider = GetComponentInChildren<Slider>();
-        healthSlider.maxValue = maxHealth;
-        Health = maxHealth;
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            Health = maxHealth;
+        }
 
     }
 
@@ -49,9 +57,12 @@ public class Entity : MonoBehaviour, IDamageable
 
     public IEnumerator DamageEffect()
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
+        SpriteRenderer renderer = GetComponent<SpriteRenderer>();
+
+
+        renderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
-        GetComponent<SpriteRenderer>().color = Color.white;
+        renderer.color = normalColor;
 
     }
 

@@ -7,7 +7,7 @@ public class TouchDamage : MonoBehaviour
     [SerializeField] float selfDamage = 10;
     [SerializeField] private float attackCD = 5f;
     float nextDamage = 0;
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (nextDamage > Time.time) return;

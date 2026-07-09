@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
-  fireCD: 0.5
 --- !u!1 &6719967761301423195
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipSpeed: 3
-  rotationSpeed: 5
+  rotationSpeed: 360
 --- !u!1 &7021081190914697586
 GameObject:
   m_ObjectHideFlags: 0
@@ -322,7 +321,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
-  fireCD: 0.5
 --- !u!1 &8585434959088953272
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +367,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4562634296037568141, guid: 464b964e6efbbc74ca6eab9baf75a436, type: 3}
   roundsPerSecond: 2.5
-  fireCD: 0.5
 --- !u!1001 &5826145608245770752
 PrefabInstance:
   m_ObjectHideFlags: 0

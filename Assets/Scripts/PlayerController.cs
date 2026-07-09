@@ -3,9 +3,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private ShipController ship;
+    private Gun[] guns;
     private void Start()
     {
         if (ship == null) ship = GetComponent<ShipController>();
+        guns = GetComponentsInChildren<Gun>();
     }
     void Update()
     {
@@ -15,6 +17,14 @@ public class PlayerController : MonoBehaviour
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         ship.PointShip(mousePos);
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            foreach (Gun gun in guns)
+            {
+                gun.Shoot(mousePos);
+            }
+        }
     }
     private void FixedUpdate()
     {
