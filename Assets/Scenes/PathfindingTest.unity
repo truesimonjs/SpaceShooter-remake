@@ -131,10 +131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy shootership
       objectReference: {fileID: 0}
-    - target: {fileID: 5346902807439553223, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
-      propertyPath: targetT
-      value: 
-      objectReference: {fileID: 594598003}
     - target: {fileID: 7999530042624575227, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.84
@@ -175,8 +171,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -827592091348006009, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -262,11 +257,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b792cb9beacccc24da7767f496a69669, type: 3}
---- !u!4 &594598003 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5507723784980701776, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
-  m_PrefabInstance: {fileID: 1357678459}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &698636969
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,16 +618,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Impact ship
       objectReference: {fileID: 0}
-    - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Enabled
+    - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}

@@ -10,23 +10,25 @@ public class Gun : MonoBehaviour
     private void Update()
     {
         fireCD = 1 / roundsPerSecond;
-        if (Input.GetKey(KeyCode.Mouse0) && Time.time > nextFire)
+        if (Input.GetKey(KeyCode.Mouse0))
         {
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Shoot(mousePos);
-            nextFire = Time.time + fireCD;
+            
 
         }
     }
 
-    private void Shoot(Vector3 mousePos)
+    private void Shoot(Vector3 targetPos)
     {
+        if (Time.time <= nextFire) return; 
         GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 
         bullet.GetComponent<Bullet>().owner = transform.parent.gameObject;
-        transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, mousePos));
+        transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, targetPos));
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
+        nextFire = Time.time + fireCD;
 
 
     }
