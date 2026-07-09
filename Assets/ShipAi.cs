@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ShipAi : MonoBehaviour
 {
-    private ShipController ship;
-    private Vector3 lastKnownPos;
+    protected ShipController ship;
+    protected Vector3 lastKnownPos;
     [SerializeField]private float sightRange = 10;
     [SerializeField] private LayerMask layerMask;
     private void Awake()
