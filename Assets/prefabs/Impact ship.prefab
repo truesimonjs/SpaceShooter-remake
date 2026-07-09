@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 5117017191544750179}
   - component: {fileID: 3266260986990183878}
   - component: {fileID: 3204949488801766880}
-  - component: {fileID: 6266994054656016527}
   - component: {fileID: 8890504063079603846}
   - component: {fileID: 8845432405810457479}
   - component: {fileID: 2818167961794432666}
   - component: {fileID: 6237803274791109486}
+  - component: {fileID: -3330119840454418883}
   m_Layer: 7
   m_Name: Impact ship
   m_TagString: Untagged
@@ -204,18 +204,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 25
---- !u!114 &6266994054656016527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4016573422838669101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22b7b5cd3edb6ad49bf55453bef5a8f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8890504063079603846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipSpeed: 1.5
+  rotationSpeed: 360
 --- !u!58 &2818167961794432666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -293,6 +282,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPointer: {fileID: 6930969985375400091, guid: dc0f08a58accc5c458cbf123622b9979, type: 3}
+--- !u!114 &-3330119840454418883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016573422838669101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2155c91a61744f547bc648398c3a3ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sightRange: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &2927839668423221500
 PrefabInstance:
   m_ObjectHideFlags: 0

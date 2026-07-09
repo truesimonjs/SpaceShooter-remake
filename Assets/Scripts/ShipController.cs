@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShipController : MonoBehaviour
 {
     [SerializeField] private float shipSpeed = 3;
-    [SerializeField] private float rotationSpeed = 5;
+    [SerializeField] private float rotationSpeed = 360;
     private Rigidbody2D rb;
     private void Start()
     {
@@ -31,6 +31,19 @@ public class ShipController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         if (direction.magnitude < 0.5f) return;
        rb.linearVelocity = direction.normalized*shipSpeed;
+    }
+    public virtual void MoveTowards(Vector2 destination, float distance = 1)
+    {
+        Vector3 goal = destination - (Vector2)transform.position;
+        if (goal.magnitude < distance)
+        {
+            MoveShip(Vector2.zero);
+        } else
+        {
+        PointShip(destination);
+        MoveShip(goal.normalized);
+
+        }
     }
 }
 
