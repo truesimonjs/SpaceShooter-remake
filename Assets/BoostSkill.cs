@@ -2,13 +2,13 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BoostSkill : MonoBehaviour
+public class BoostSkill : MonoBehaviour, ISkill
 {
     [SerializeField] private float speed = 4;
     [SerializeField] private float rotationSpeed = 10;
     [SerializeField] private float duration = 0.5f;
     [SerializeField] float cooldown = 1f;
-    public string activator = "Boost";
+    [field:SerializeField]public string Activator { get; set; } = "Boost";
     
     ShipController ship;
     private float nextActivate = 0f;

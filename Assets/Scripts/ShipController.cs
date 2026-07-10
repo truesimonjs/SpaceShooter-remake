@@ -6,16 +6,16 @@ public class ShipController : MonoBehaviour
     
     [SerializeField] public float shipSpeed = 3;
     [SerializeField] public float rotationSpeed = 360;
-    [SerializeField] private Dictionary<string, BoostSkill> skills = new();
+    [SerializeField] private Dictionary<string, ISkill> skills = new();
     private Rigidbody2D rb;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        BoostSkill[] skillArr = GetComponentsInChildren<BoostSkill>();
+        ISkill[] skillArr = GetComponentsInChildren<ISkill>();
         
         foreach (BoostSkill skill in skillArr)
         {
-            skills.Add(skill.activator, skill);
+            skills.Add(skill.Activator, skill);
             skill.Initiate(this);
         }
     }
