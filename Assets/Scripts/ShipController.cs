@@ -1,14 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ShipController : MonoBehaviour
 {
-    [SerializeField] private float shipSpeed = 3;
-    [SerializeField] private float rotationSpeed = 360;
+    
+    [SerializeField] public float shipSpeed = 3;
+    [SerializeField] public float rotationSpeed = 360;
+    [SerializeField] private Dictionary<string, BoostSkill> skills = new();
     private Rigidbody2D rb;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        BoostSkill[] skillArr = GetComponentsInChildren<BoostSkill>();
+        
+        foreach (BoostSkill skill in skillArr)
+        {
+            skills.Add(skill.activator, skill);
+            skill.Initiate(this);
+        }
     }
+    public void ActivateSkill(string keyword)
+    {
+        skills[keyword]?.Activate();
+    }
+
     public virtual void PointShip(Vector3 targetPos)
     {
         float originRot = transform.eulerAngles.z;

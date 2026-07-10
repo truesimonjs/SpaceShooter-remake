@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ImpactShipAi : ShipAi
 {
+    [SerializeField] private float boostDistance = 3f;
     protected override void Update()
     {
         Transform targetT = CheckForTarget();
@@ -21,5 +22,9 @@ public class ImpactShipAi : ShipAi
     {
         ship.PointShip(lastKnownPos);
         ship.MoveShip(transform.up);
+        if (Vector3.Distance(lastKnownPos, transform.position) < boostDistance)
+        {
+            ship.ActivateSkill("Boost");
+        }
     }
 }
