@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ImpactShipAi : MonoBehaviour
+public class ImpactShipAiOld : MonoBehaviour
 {
     private Transform playerT;
     private ShipController ship;

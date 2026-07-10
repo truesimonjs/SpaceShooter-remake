@@ -11,7 +11,7 @@ public class ShipAi : MonoBehaviour
         ship = GetComponent<ShipController>();
         lastKnownPos = transform.position;
     }
-    private void Update()
+    protected virtual void Update()
     {
         Transform targetT = CheckForTarget();
         if (targetT != null)
@@ -24,16 +24,13 @@ public class ShipAi : MonoBehaviour
             ship.MoveTowards(lastKnownPos);
 
         }
-
-
-
     }
     protected virtual void Spotted()
     {
         ship.MoveTowards(lastKnownPos);
     }
 
-    private Transform CheckForTarget()
+    protected Transform CheckForTarget()
     {
         LayerMask circleMask = 0;
         circleMask |= (1 << LayerMask.NameToLayer("Player"));

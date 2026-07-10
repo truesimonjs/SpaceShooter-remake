@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8845432405810457479}
   - component: {fileID: 2818167961794432666}
   - component: {fileID: 6237803274791109486}
-  - component: {fileID: -3330119840454418883}
+  - component: {fileID: -2946658020591175375}
   m_Layer: 7
   m_Name: Impact ship
   m_TagString: Untagged
@@ -231,8 +231,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9028b4e921c258d41a9e87a52d0dac0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipSpeed: 1.5
-  rotationSpeed: 360
+  shipSpeed: 3.1
+  rotationSpeed: 90
 --- !u!58 &2818167961794432666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPointer: {fileID: 6930969985375400091, guid: dc0f08a58accc5c458cbf123622b9979, type: 3}
---- !u!114 &-3330119840454418883
+--- !u!114 &-2946658020591175375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,13 +291,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4016573422838669101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2155c91a61744f547bc648398c3a3ba9, type: 3}
+  m_Script: {fileID: 11500000, guid: b88712b9dcf8de14d914bd7b8f3950aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sightRange: 10
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!1001 &2927839668423221500
 PrefabInstance:
   m_ObjectHideFlags: 0
