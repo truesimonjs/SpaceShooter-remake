@@ -3,11 +3,21 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    [SerializeField] float roundsPerSecond = 2;
+    [SerializeField] private float roundsPerSecond = 2;
+    [SerializeField] private AudioClip shootSound;
     private float fireCD = 100f;
     private float bulletSpeed = 10;
     private float nextFire;
+    private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+        audioSource.clip = shootSound;
 
+        }
+    }
 
     public void Shoot(Vector3 targetPos)
     {
@@ -19,7 +29,9 @@ public class Gun : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, targetPos));
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
         nextFire = Time.time + fireCD;
-
+        if (audioSource != null) audioSource.Play();
+       
+        
 
     }
 }
