@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class Entity : MonoBehaviour, IDamageable
 {
 
     [SerializeField] protected float maxHealth = 100;
+    [SerializeField] AudioClip hurtSound;
     protected Slider healthSlider;
+    private AudioSource audioSource;
     private float health = 100;
     Color normalColor;
     public float Health
@@ -37,6 +40,12 @@ public class Entity : MonoBehaviour, IDamageable
             healthSlider.maxValue = maxHealth;
             Health = maxHealth;
         }
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.clip = hurtSound;
+
+        }
 
     }
 
@@ -52,6 +61,7 @@ public class Entity : MonoBehaviour, IDamageable
 
         Health -= damage;
         StartCoroutine(DamageEffect());
+        if (audioSource != null) audioSource.Play();
         if (Health <= 0) Destroy(gameObject, 0.1f);
     }
 
