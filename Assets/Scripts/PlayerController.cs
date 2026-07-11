@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ship == null) ship = GetComponent<ShipController>();
         guns = GetComponentsInChildren<Gun>();
-        AudioListener.volume = 0.5f;
+        AudioListener.volume = 0.25f;
     }
     void Update()
     {
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            AudioListener.volume = AudioListener.volume == 0 ? 0.5f : 0;
+            AudioListener.volume = AudioListener.volume == 0 ? 0.25f : 0;
         }
     }
     private void FixedUpdate()
