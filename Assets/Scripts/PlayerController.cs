@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     {
         if (ship == null) ship = GetComponent<ShipController>();
         guns = GetComponentsInChildren<Gun>();
-        AudioListener.volume = 0.25f;
+        AudioListener.volume = 0f;
     }
     void Update()
     {
