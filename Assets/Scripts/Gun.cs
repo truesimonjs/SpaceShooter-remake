@@ -23,10 +23,9 @@ public class Gun : MonoBehaviour
     {
         fireCD = 1 / roundsPerSecond;
         if (Time.time <= nextFire) return;
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-
-        bullet.GetComponent<Bullet>().owner = transform.parent.gameObject;
         transform.eulerAngles = new Vector3(0, 0, RandomUtils.pointAt(transform.position, targetPos));
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
+        bullet.GetComponent<Bullet>().owner = transform.parent.gameObject;
         bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
         nextFire = Time.time + fireCD;
         if (audioSource != null) audioSource.Play();
