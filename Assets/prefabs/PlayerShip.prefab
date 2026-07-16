@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3b694025c9d1b4d990801c365642a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: -8295051211622515048}
+  target: {fileID: 6719967761301423195}
 --- !u!1 &4276057103804481517
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  hurtSound: {fileID: 0}
 --- !u!114 &-2639443711546954101
 MonoBehaviour:
   m_ObjectHideFlags: 0

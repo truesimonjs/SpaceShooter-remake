@@ -5,7 +5,8 @@ public class EntityDisplay : MonoBehaviour
 {
    private Color normalColor;
    private SpriteRenderer sprite;
-   [SerializeField] private Entity entity;
+   [SerializeField] private GameObject target;
+   private Entity entity;
     private void Start()
     {
         if (entity == null) entity = gameObject.GetComponent<Entity>();
@@ -29,6 +30,20 @@ public class EntityDisplay : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         sprite.color = normalColor;
 
+    }
+    private void OnValidate()
+    {
+        if (target != null)
+        {
+            IDamageable idamageAble = target.GetComponent<IDamageable>();
+            if ( idamageAble == null)
+            {
+                Debug.LogWarning("entityDisplay target must implement interface IDamageAble", this);
+                target = null;
+            }
+        }
+      
+        
     }
 
 }
