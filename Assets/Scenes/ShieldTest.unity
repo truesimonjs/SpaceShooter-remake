@@ -348,11 +348,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxEnergy>k__BackingField: 100
   energy: 100
+--- !u!1 &1266297289 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6662951042863381552, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+  m_PrefabInstance: {fileID: 8754933192446039564}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1266297290 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5321475689488851362, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
   m_PrefabInstance: {fileID: 8754933192446039564}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1266297294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266297289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724fd52531c97294c819b13c2c83067a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!1 &2088219467
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +996,6 @@ GameObject:
   - component: {fileID: 7586964496020465191}
   - component: {fileID: 219450459486211239}
   - component: {fileID: 8740935633009350299}
-  - component: {fileID: 8740935633009350300}
   m_Layer: 7
   m_Name: Enemy laser station tester
   m_TagString: Untagged
@@ -1046,20 +1064,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &8740935633009350300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509712644611274339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724fd52531c97294c819b13c2c83067a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entity: {fileID: 0}
-  slider: {fileID: 0}
 --- !u!1001 &8754933192446039564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1074,6 +1078,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024053641298965635, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262946377316186198, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1262946377316186198, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
@@ -1188,6 +1196,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5962059077787614571, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5962059077787614571, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6662951042863381552, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
       propertyPath: m_Name
       value: Healthbar canvas
@@ -1196,6 +1212,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7541588293048203038, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9198281587951463194, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -1203,7 +1223,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6662951042863381552, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1266297294}
   m_SourcePrefab: {fileID: 100100000, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

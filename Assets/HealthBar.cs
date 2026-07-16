@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour
 
     private void Start()
     {
-        if ( entity == null) entity = GetComponent<Entity>();
+        if ( entity == null) entity = GetComponentInParent<Entity>();
         if (slider == null) slider = GetComponentInChildren<Slider>();
         slider.maxValue = entity.MaxHealth;
         entity.HealthChange += Entity_HealthChange;

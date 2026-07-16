@@ -173,7 +173,6 @@ GameObject:
   - component: {fileID: 3394165138127815152}
   - component: {fileID: 4548113985534226765}
   - component: {fileID: 6151864966970661837}
-  - component: {fileID: -1790737396279822020}
   m_Layer: 7
   m_Name: Enemy laser station
   m_TagString: Untagged
@@ -426,20 +425,6 @@ PolygonCollider2D:
       - {x: 0.85, y: 0.5}
       - {x: 0.45000002, y: 1}
   m_UseDelaunayMesh: 0
---- !u!114 &-1790737396279822020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2327489094893461769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 724fd52531c97294c819b13c2c83067a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entity: {fileID: 0}
-  slider: {fileID: 0}
 --- !u!1 &2344195231310452449
 GameObject:
   m_ObjectHideFlags: 0
