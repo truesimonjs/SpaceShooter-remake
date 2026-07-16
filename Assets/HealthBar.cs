@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour
         if ( entity == null) entity = GetComponent<Entity>();
         if (slider == null) slider = GetComponentInChildren<Slider>();
         slider.maxValue = entity.MaxHealth;
-        entity.OnHealthChange += Entity_HealthChange;
+        entity.HealthChange += Entity_HealthChange;
 
     }
 

@@ -331,9 +331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   priority: 1
   maxShields: 15
-  shields: 0
   shieldsPerSec: 1
   CostPerShield: 10
+  shields: 0
 --- !u!114 &1165215441
 MonoBehaviour:
   m_ObjectHideFlags: 0
