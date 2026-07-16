@@ -1,12 +1,13 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class ShipCore : Entity
+public class ShipEntity : Entity
 {
-
     public List<DamageAbleModule> damageAbleModules;
+    
     public override void TakeDamage(float damage = 1)
     {
   
@@ -14,7 +15,7 @@ public class ShipCore : Entity
         foreach (var module in damageAbleModules) 
         {
             
-            //Debug.Log(dmg);
+          
             damage = module.TryTakeDamage(damage);
             
             if (damage <= 0) break;
@@ -25,6 +26,7 @@ public class ShipCore : Entity
     public override void Start()
     {
         base.Start();
+        damageAbleModules = GetComponentsInChildren<DamageAbleModule>().ToList();
         damageAbleModules.Sort((x, y) => y.priority - x.priority );
         
     }

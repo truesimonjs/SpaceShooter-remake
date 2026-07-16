@@ -10,14 +10,14 @@ public class Entity : MonoBehaviour, IDamageable
     [SerializeField] public float MaxHealth { get; private set; } = 100;
     private float health = 100;
     public event EventHandler OnTakeDamage;
-    public event EventHandler HealthChange;
+    public event EventHandler OnHealthChange;
     public float Health
     {
         get => health;
         set
         {
             health = value;
-            HealthChange?.Invoke(this, EventArgs.Empty);
+            OnHealthChange?.Invoke(this, EventArgs.Empty);
         }
     }
 
