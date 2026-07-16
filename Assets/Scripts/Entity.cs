@@ -24,7 +24,7 @@ public class Entity : MonoBehaviour, IDamageable
     }
 
 
-    private void Start()
+    public virtual void Start()
     {
 
         healthSlider = GetComponentInChildren<Slider>();
@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour, IDamageable
     }
 
 
-    public void TakeDamage(float damage = 1)
+    public virtual void TakeDamage(float damage = 1)
     {
 
         Health -= damage;
