@@ -16,10 +16,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameObject other = collision.attachedRigidbody.gameObject;
 
-
-        if (collision.gameObject == owner) return;
-        IDamageable Damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (other == owner) return;
+        IDamageable Damageable = other.GetComponent<IDamageable>();
         if (Damageable == null) return;
 
         Damageable.TakeDamage();
