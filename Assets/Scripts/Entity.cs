@@ -7,42 +7,27 @@ using UnityEngine.UI;
 public class Entity : MonoBehaviour, IDamageable
 {
 
-    [SerializeField] protected float maxHealth = 100;
-    protected Slider healthSlider;
+    [SerializeField] public float MaxHealth { get; private set; } = 100;
     private float health = 100;
     public event EventHandler OnTakeDamage;
+    public event EventHandler HealthChange;
     public float Health
     {
         get => health;
         set
         {
             health = value;
-            if (healthSlider == null) return;
-            healthSlider.value = health;
-            healthSlider.gameObject.SetActive(health < maxHealth);
+            HealthChange?.Invoke(this, EventArgs.Empty);
         }
     }
 
 
     public virtual void Start()
     {
-
-        healthSlider = GetComponentInChildren<Slider>();
-        if (healthSlider != null)
-        {
-            healthSlider.maxValue = maxHealth;
-            Health = maxHealth;
-        }
-
-
+        Health = MaxHealth;
     }
 
-    private void LateUpdate()
-    {
-        if (healthSlider == null) return;
-        healthSlider.transform.parent.rotation = Quaternion.identity;
-    }
-
+ 
 
     public virtual void TakeDamage(float damage = 1)
     {

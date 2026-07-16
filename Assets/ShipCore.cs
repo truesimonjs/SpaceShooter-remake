@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShipCore : Entity
 {
- 
+
     public List<DamageAbleModule> damageAbleModules;
     public override void TakeDamage(float damage = 1)
     {

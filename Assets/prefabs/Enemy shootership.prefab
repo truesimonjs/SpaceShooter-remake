@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 6983953901127725390}
   - component: {fileID: 8222548543935769257}
   - component: {fileID: -6081937559547746214}
+  - component: {fileID: 3810320494139799006}
   m_Layer: 7
   m_Name: Enemy shootership
   m_TagString: Untagged
@@ -549,7 +550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc2b63acba67eef4cb0e4b1ce3ef61c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 25
 --- !u!114 &8222548543935769257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +599,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.6
+--- !u!114 &3810320494139799006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720899003650112843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724fd52531c97294c819b13c2c83067a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!1 &4518638256487077340
 GameObject:
   m_ObjectHideFlags: 0
