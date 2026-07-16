@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -7,11 +8,12 @@ public class Entity : MonoBehaviour, IDamageable
 {
 
     [SerializeField] protected float maxHealth = 100;
-    [SerializeField] AudioClip hurtSound;
+    //[SerializeField] AudioClip hurtSound;
     protected Slider healthSlider;
-    private AudioSource audioSource;
+    //private AudioSource audioSource;
     private float health = 100;
-    Color normalColor;
+    public event EventHandler OnTakeDamage;
+    //Color normalColor;
     public float Health
     {
         get => health;
@@ -27,7 +29,7 @@ public class Entity : MonoBehaviour, IDamageable
 
     private void Awake()
     {
-        normalColor = GetComponent<SpriteRenderer>().color;
+        //normalColor = GetComponent<SpriteRenderer>().color;
     }
 
 
@@ -40,12 +42,12 @@ public class Entity : MonoBehaviour, IDamageable
             healthSlider.maxValue = maxHealth;
             Health = maxHealth;
         }
-        audioSource = GetComponent<AudioSource>();
+        /*audioSource = GetComponent<AudioSource>();
         if (audioSource != null)
         {
             audioSource.clip = hurtSound;
 
-        }
+        }*/
 
     }
 
@@ -60,11 +62,12 @@ public class Entity : MonoBehaviour, IDamageable
     {
 
         Health -= damage;
-        StartCoroutine(DamageEffect());
-        if (audioSource != null) audioSource.Play();
+        OnTakeDamage?.Invoke(this, EventArgs.Empty);
+        //StartCoroutine(DamageEffect());
+        //if (audioSource != null) audioSource.Play();
         if (Health <= 0) Destroy(gameObject, 0.1f);
     }
-
+    /*
     public IEnumerator DamageEffect()
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
@@ -75,6 +78,6 @@ public class Entity : MonoBehaviour, IDamageable
         renderer.color = normalColor;
 
     }
-
+    */
 
 }
