@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ShipShield : DamageAbleModule
+public class ShipShieldGradual : DamageAbleModule
 {
     //setup
     public float maxShields = 10;
@@ -10,6 +10,19 @@ public class ShipShield : DamageAbleModule
     //
     public event EventHandler OnShieldChange;
     public float shields = 0;
+    public float Shields
+    {
+        get =>shields; 
+        set
+        {
+            if (value != shields)
+            {
+                
+                shields = value;
+                OnShieldChange?.Invoke(this, EventArgs.Empty);
+            }
+        }
+    }
     private float timer = 0;
     private ShipModuleMaster master;
     private void Start()
@@ -20,18 +33,19 @@ public class ShipShield : DamageAbleModule
     {
         const float cooldown = 1;
         timer -= Time.deltaTime;
-        if ( shields != maxShields &&timer <= 0)
+        if ( Shields != maxShields &&timer <= 0)
         {
-            float newShield = Mathf.Clamp(shields + shieldsPerSec, 0, maxShields);
-            float shieldChange = newShield - shields;
+            float newShield = Mathf.Clamp(Shields + shieldsPerSec, 0, maxShields);
+            float shieldChange = newShield - Shields;
             float cost = master.ChangeEnergy(-shieldChange * CostPerShield);
-            shields += -cost / CostPerShield;
+            
+            Shields += -cost / CostPerShield;
             timer = cooldown;
         }
     }
     public override float TryTakeDamage(float damage = 1)
     {
-        shields -= damage;
+        Shields -= damage;
         if (shields > 0) 
         {
             damage = 0;

@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6411816381984244051, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6411816381984244051, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6719967761301423195, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: m_Name
       value: PlayerShip
@@ -192,6 +200,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+--- !u!114 &123072923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3865581597070434865, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
+  m_PrefabInstance: {fileID: 8754933192446039564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &197635257
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,7 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438017040d812a34794f53d03e95db63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <MaxEnergy>k__BackingField: 100
+  <MaxEnergy>k__BackingField: 50
   energy: 100
 --- !u!1 &1266297289 stripped
 GameObject:
@@ -372,6 +391,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
   slider: {fileID: 0}
+  shipShield: {fileID: 1165215440}
+  shieldImage: {fileID: 123072923}
 --- !u!1 &2088219467
 GameObject:
   m_ObjectHideFlags: 0
