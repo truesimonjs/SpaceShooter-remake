@@ -3,7 +3,7 @@ using UnityEngine;
 public class GeneratorModule : MonoBehaviour
 {
     private ShipModuleMaster master;
-    [SerializeField] private float energyRate;
+    [SerializeField] private float energyRate = 1;
     float timer = 0;
     private void Start()
     {
