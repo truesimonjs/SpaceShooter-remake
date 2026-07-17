@@ -17,7 +17,7 @@ public class ModulePickup : MonoBehaviour
             module.transform.parent = moduleHolder.transform;
             module.transform.localPosition = Vector3.zero;
             module.SetActive(true);
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
