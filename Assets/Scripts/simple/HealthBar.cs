@@ -17,17 +17,18 @@ public class HealthBar : MonoBehaviour
         slider.value = entity.Health;
         entity.HealthChange += Entity_HealthChange;
 
-        //shield
-        if ( shipShield == null) shipShield = transform.parent.GetComponentInChildren<ShipShieldModule>(true);
-        if (shipShield != null)
-        {
+       if (shipShield== null) shieldImage.fillAmount = 0;
+
+    }
+    public void ShieldStart(ShipShieldModule shield)
+    {
+    
+            shipShield = shield;
             shipShield.OnShieldChange += ShipShield_OnShieldChange;
             shieldImage.fillAmount = shipShield.shields / shipShield.maxShields;
-        }
-        else shieldImage.fillAmount = 0;
-        updateBar();
+        
+      
     }
-
     private void ShipShield_OnShieldChange(object sender, System.EventArgs e)
     {
         shieldImage.fillAmount = shipShield.shields / shipShield.maxShields;

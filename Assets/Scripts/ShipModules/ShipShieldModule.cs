@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public class ShipShieldModule : DamageAbleModule
+public class ShipShieldModule : MonoBehaviour,IDamageAbleModule
 {
     //setup
+    [field: SerializeField] public int Priority {  get; set;}
     public float maxShields = 10;
     public float shieldsPerSec = 1;
     public float CostPerShield = 1;
@@ -28,9 +29,11 @@ public class ShipShieldModule : DamageAbleModule
     private void Start()
     {
         master = GetComponent<ShipModuleMaster>();
+        transform.parent.GetComponentInChildren<HealthBar>().ShieldStart(this);
     }
     private void Update()
     {
+        
         const float cooldown = 1;
         timer -= Time.deltaTime;
         if (Shields != maxShields && timer <= 0)
@@ -45,7 +48,7 @@ public class ShipShieldModule : DamageAbleModule
             timer = cooldown;
         }
     }
-    public override float TryTakeDamage(float damage = 1)
+    public float TryTakeDamage(float damage = 1)
     {
         Shields -= damage;
         if (shields > 0)

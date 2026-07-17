@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ShipEntity : Entity
 {
-    public List<DamageAbleModule> damageAbleModules;
+    public List<IDamageAbleModule> damageAbleModules;
     
     public override void TakeDamage(float damage = 1)
     {
@@ -26,9 +26,9 @@ public class ShipEntity : Entity
     public override void Start()
     {
         base.Start();
-        damageAbleModules = GetComponentsInChildren<DamageAbleModule>().ToList();
+        damageAbleModules = GetComponentsInChildren<IDamageAbleModule>().ToList();
         Debug.Log(GetComponentsInChildren<DamageAbleModule>().ToList().Count);
-        damageAbleModules.Sort((x, y) => y.priority - x.priority );
+        damageAbleModules.Sort((x, y) => y.Priority - x.Priority );
         
     }
 }
