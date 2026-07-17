@@ -27,6 +27,7 @@ public class ShipEntity : Entity
     {
         base.Start();
         damageAbleModules = GetComponentsInChildren<DamageAbleModule>().ToList();
+        Debug.Log(GetComponentsInChildren<DamageAbleModule>().ToList().Count);
         damageAbleModules.Sort((x, y) => y.priority - x.priority );
         
     }

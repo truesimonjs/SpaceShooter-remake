@@ -282,6 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
   slider: {fileID: 0}
+  shipShield: {fileID: 0}
+  shieldImage: {fileID: 3865581597070434865}
 --- !u!1 &7951375753851579356
 GameObject:
   m_ObjectHideFlags: 0

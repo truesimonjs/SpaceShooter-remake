@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Entity : MonoBehaviour, IDamageable
 {
 
-    [SerializeField] public float MaxHealth { get; private set; } = 100;
+    [field:SerializeField] public float MaxHealth { get; private set; } = 100;
     private float health = 100;
     public event EventHandler OnTakeDamage;
     public event EventHandler HealthChange;
