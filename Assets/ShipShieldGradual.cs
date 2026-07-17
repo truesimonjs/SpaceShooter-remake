@@ -37,7 +37,7 @@ public class ShipShieldGradual : DamageAbleModule
         {
             float newShield = Mathf.Clamp(Shields + shieldsPerSec, 0, maxShields);
             float shieldChange = newShield - Shields;
-            float cost = master.ChangeEnergy(-shieldChange * CostPerShield);
+            float cost = master.ChangeEnergyFloat(-shieldChange * CostPerShield);
             
             Shields += -cost / CostPerShield;
             timer = cooldown;

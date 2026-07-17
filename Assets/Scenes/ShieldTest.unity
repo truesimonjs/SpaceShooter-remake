@@ -314,6 +314,7 @@ GameObject:
   - component: {fileID: 1165215439}
   - component: {fileID: 1165215441}
   - component: {fileID: 1165215440}
+  - component: {fileID: 1165215442}
   m_Layer: 7
   m_Name: Modules
   m_TagString: Untagged
@@ -343,7 +344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1165215438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 058081c4b3a85ac4b8ccb72b88072f50, type: 3}
   m_Name: 
@@ -367,6 +368,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxEnergy>k__BackingField: 50
   energy: 100
+--- !u!114 &1165215442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1165215438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb485a2a583d5f47b08d6cc7f980da1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priority: 1
+  maxShields: 15
+  shieldsPerSec: 1
+  CostPerShield: 10
+  shields: 0
 --- !u!1 &1266297289 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6662951042863381552, guid: 67f7c1315bbd5d14e86b362a3d11e840, type: 3}
@@ -391,7 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
   slider: {fileID: 0}
-  shipShield: {fileID: 1165215440}
+  shipShield: {fileID: 1165215442}
   shieldImage: {fileID: 123072923}
 --- !u!1 &2088219467
 GameObject:

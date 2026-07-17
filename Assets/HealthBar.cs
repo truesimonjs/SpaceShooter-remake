@@ -5,7 +5,7 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Entity entity;
     [SerializeField] private Slider slider;
-    [SerializeField] private ShipShieldGradual shipShield;
+    [SerializeField] private ShipShieldModule shipShield;
     [SerializeField] private Image shieldImage;
 
     private void Start()

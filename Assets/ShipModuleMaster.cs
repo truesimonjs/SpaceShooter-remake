@@ -11,13 +11,24 @@ public class ShipModuleMaster : MonoBehaviour
     {
         energy = Mathf.Clamp(energy , 0, MaxEnergy);
     }
-    public float ChangeEnergy(float value)
+    public float ChangeEnergyFloat(float value)
     {
+        Debug.LogWarning("changeenergyfloat is deprecating");
         float oldValue = energy;
         energy = Mathf.Clamp(energy + value, 0, MaxEnergy);
         OnEnergyChange?.Invoke(this, EventArgs.Empty);
         
        //Debug.Log(energy - oldValue);
         return energy - oldValue;
+    }
+    public bool ChangeEnergyBool(float value)
+    {
+        float oldValue = energy;
+        bool hasEnough = MaxEnergy >= energy+value && energy + value >= 0;
+        if (!hasEnough) return false;
+        energy += value;
+        OnEnergyChange?.Invoke(this, EventArgs.Empty);
+        return true;
+     
     }
 }
