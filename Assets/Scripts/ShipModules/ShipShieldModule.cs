@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ShipShieldModule : MonoBehaviour,IDamageAbleModule
+public class ShipShieldModule : ShipModule,IDamageAbleModule
 {
     //setup
     [field: SerializeField] public int Priority {  get; set;}
@@ -29,8 +29,8 @@ public class ShipShieldModule : MonoBehaviour,IDamageAbleModule
     private ShipModuleMaster master;
     private void Start()
     {
-        master = GetComponent<ShipModuleMaster>();
-        transform.parent.GetComponentInChildren<HealthBar>().ShieldStart(this);
+        master = GetComponentInParent<ShipModuleMaster>();
+        master.transform.parent.GetComponentInChildren<HealthBar>().ShieldStart(this);
     }
     private void Update()
     {

@@ -4,8 +4,7 @@ using UnityEngine;
 public class ModulePickup : MonoBehaviour
 {
     //[SerializeField] private GameObject Module;
-    [SerializeField] private string typeString;
-    [SerializeField] Type t;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("triggerenter");
@@ -14,13 +13,13 @@ public class ModulePickup : MonoBehaviour
         {
            GameObject moduleHolder = other.GetComponentInChildren<ShipModuleMaster>().gameObject;
 
-            Type t = Type.GetType(typeString);
-            moduleHolder.AddComponent(t);
+            GameObject module = GetComponentInChildren<ShipModule>(true).gameObject;
+            module.transform.parent = moduleHolder.transform;
+            module.transform.localPosition = Vector3.zero;
+            module.SetActive(true);
+            Destroy(this);
         }
     }
 
-    private void OnValidate()
-    {
-        if (typeString != null && Type.GetType(typeString) == null) Debug.LogWarning("typestring does not point to a component", this);
-    }
+
 }
