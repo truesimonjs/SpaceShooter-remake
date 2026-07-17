@@ -5,9 +5,10 @@ public class ShipShieldModule : MonoBehaviour,IDamageAbleModule
 {
     //setup
     [field: SerializeField] public int Priority {  get; set;}
-    public float maxShields = 10;
-    public float shieldsPerSec = 1;
-    public float CostPerShield = 1;
+    [field: SerializeField] public ShieldShipScriptable Stats { get; private set; }
+    //public float maxShields = 10;
+    //public float shieldsPerSec = 1;
+    //public float CostPerShield = 1;
     //
     public event EventHandler OnShieldChange;
     public float shields = 0;
@@ -36,14 +37,14 @@ public class ShipShieldModule : MonoBehaviour,IDamageAbleModule
         
         const float cooldown = 1;
         timer -= Time.deltaTime;
-        if (Shields != maxShields && timer <= 0)
+        if (Shields != Stats.maxShields && timer <= 0)
         {
 
-            for (int i = 0; i < shieldsPerSec; i++)
+            for (int i = 0; i < Stats.shieldsPerSec; i++)
             {
-                if (Shields >= maxShields) break;
+                if (Shields >= Stats.maxShields) break;
                
-                if (master.ChangeEnergyBool(-CostPerShield)) Shields += 1;
+                if (master.ChangeEnergyBool(-Stats.CostPerShield)) Shields += 1;
             }
             timer = cooldown;
         }

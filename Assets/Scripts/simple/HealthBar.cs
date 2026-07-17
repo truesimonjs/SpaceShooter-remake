@@ -25,13 +25,13 @@ public class HealthBar : MonoBehaviour
     
             shipShield = shield;
             shipShield.OnShieldChange += ShipShield_OnShieldChange;
-            shieldImage.fillAmount = shipShield.shields / shipShield.maxShields;
+            shieldImage.fillAmount = shipShield.shields / shipShield.Stats.maxShields;
         
       
     }
     private void ShipShield_OnShieldChange(object sender, System.EventArgs e)
     {
-        shieldImage.fillAmount = shipShield.shields / shipShield.maxShields;
+        shieldImage.fillAmount = shipShield.shields / shipShield.Stats.maxShields;
         updateBar();
     }
 
@@ -50,7 +50,7 @@ public class HealthBar : MonoBehaviour
         }
         else
         {
-            slider.gameObject.SetActive(entity.Health < entity.MaxHealth ||shipShield.shields<shipShield.maxShields);
+            slider.gameObject.SetActive(entity.Health < entity.MaxHealth ||shipShield.shields<shipShield.Stats.maxShields);
         }
     }
     private void LateUpdate()

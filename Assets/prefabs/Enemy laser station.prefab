@@ -316,7 +316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
-  damageAbleModules: []
 --- !u!1 &2344195231310452449
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,10 +567,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb485a2a583d5f47b08d6cc7f980da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  priority: 1
-  maxShields: 15
-  shieldsPerSec: 1
-  CostPerShield: 10
+  <Priority>k__BackingField: 0
+  <Stats>k__BackingField: {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
   shields: 0
 --- !u!114 &3811363551543186596
 MonoBehaviour:

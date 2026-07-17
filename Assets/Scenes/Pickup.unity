@@ -233,9 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Priority>k__BackingField: 0
-  maxShields: 10
-  shieldsPerSec: 1
-  CostPerShield: 5
+  <Stats>k__BackingField: {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
   shields: 0
 --- !u!1001 &854029516
 PrefabInstance:
