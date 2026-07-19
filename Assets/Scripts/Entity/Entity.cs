@@ -11,6 +11,7 @@ public class Entity : MonoBehaviour, IDamageable
     private float health = 100;
     public event EventHandler OnTakeDamage;
     public event EventHandler HealthChange;
+    public event EventHandler OnDeath;
     public float Health
     {
         get => health;
@@ -34,7 +35,11 @@ public class Entity : MonoBehaviour, IDamageable
 
         Health -= damage;
         OnTakeDamage?.Invoke(this, EventArgs.Empty);
-        if (Health <= 0) Destroy(gameObject, 0.1f);
+        if (Health <= 0) 
+        {
+            OnDeath?.Invoke(this, EventArgs.Empty);
+        Destroy(gameObject, 0.1f);
+        }
     }
 
 

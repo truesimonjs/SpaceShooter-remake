@@ -8,7 +8,7 @@ public class EntityAudio : MonoBehaviour
     [SerializeField] AudioClip hurtSound;
     private void Start()
     {
-        if (entity == null) entity = gameObject.GetComponent<Entity>();
+        if (entity == null) entity = gameObject.GetComponentInParent<Entity>();
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null) audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = hurtSound;

@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427a5a53d0a4e7a4baac78c3d81286fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: -8295051211622515048}
+  entity: {fileID: 4386631448050046173}
   hurtSound: {fileID: 8300000, guid: 051bd0c9e0b4e2f4f9cc9b0f3c41775b, type: 3}
 --- !u!1 &6719967761301423195
 GameObject:
@@ -334,9 +334,9 @@ GameObject:
   - component: {fileID: 2434620368799779373}
   - component: {fileID: 5119326736664512229}
   - component: {fileID: 6419268972260928837}
-  - component: {fileID: -8295051211622515048}
   - component: {fileID: -2639443711546954101}
   - component: {fileID: 7456155062057748798}
+  - component: {fileID: 4386631448050046173}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Player
@@ -515,19 +515,6 @@ PolygonCollider2D:
       - {x: 0.48, y: -0.29}
       - {x: 0.48, y: -0.12}
   m_UseDelaunayMesh: 0
---- !u!114 &-8295051211622515048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6719967761301423195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc2b63acba67eef4cb0e4b1ce3ef61c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <MaxHealth>k__BackingField: 100
 --- !u!114 &-2639443711546954101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,6 +541,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipSpeed: 3
   rotationSpeed: 360
+--- !u!114 &4386631448050046173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719967761301423195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc87c3b4a1ce4f4daaed39ef04b0a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField: 100
 --- !u!1 &7021081190914697586
 GameObject:
   m_ObjectHideFlags: 0
