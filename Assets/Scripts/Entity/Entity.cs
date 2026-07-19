@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour, IDamageable
 {
 
     [field:SerializeField] public float MaxHealth { get; private set; } = 100;
+    [SerializeField] private IDamageModify damageModify;
     private float health = 100;
     public event EventHandler OnTakeDamage;
     public event EventHandler HealthChange;
@@ -26,6 +27,7 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual void Start()
     {
         Health = MaxHealth;
+        if (damageModify == null) damageModify = GetComponentInChildren<IDamageModify>(); 
     }
 
  
@@ -33,8 +35,9 @@ public class Entity : MonoBehaviour, IDamageable
     public virtual void TakeDamage(float damage = 1)
     {
 
-        Health -= damage;
         OnTakeDamage?.Invoke(this, EventArgs.Empty);
+       if(damageModify != null) damage = damageModify.TryTakeDamage(damage);
+        Health -= damage;
         if (Health <= 0) 
         {
             OnDeath?.Invoke(this, EventArgs.Empty);

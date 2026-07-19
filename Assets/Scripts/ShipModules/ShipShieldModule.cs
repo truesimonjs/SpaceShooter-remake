@@ -26,10 +26,9 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
         }
     }
     private float timer = 0;
-    private ShipModuleMaster master;
-    private void Start()
+    public override void Start()
     {
-        master = GetComponentInParent<ShipModuleMaster>();
+        base.Start();
         master.transform.parent.GetComponentInChildren<HealthBar>().ShieldStart(this);
     }
     private void Update()

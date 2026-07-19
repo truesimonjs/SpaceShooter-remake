@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427a5a53d0a4e7a4baac78c3d81286fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 4386631448050046173}
+  entity: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: 051bd0c9e0b4e2f4f9cc9b0f3c41775b, type: 3}
 --- !u!1 &6719967761301423195
 GameObject:
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 6419268972260928837}
   - component: {fileID: -2639443711546954101}
   - component: {fileID: 7456155062057748798}
-  - component: {fileID: 4386631448050046173}
+  - component: {fileID: 5257911942540641388}
   m_Layer: 6
   m_Name: PlayerShip
   m_TagString: Player
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipSpeed: 3
   rotationSpeed: 360
---- !u!114 &4386631448050046173
+--- !u!114 &5257911942540641388
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -550,7 +550,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6719967761301423195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc87c3b4a1ce4f4daaed39ef04b0a62, type: 3}
+  m_Script: {fileID: 11500000, guid: fc2b63acba67eef4cb0e4b1ce3ef61c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100

@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 8276702389476034208}
   - component: {fileID: 3394165138127815152}
   - component: {fileID: 4548113985534226765}
-  - component: {fileID: 1237696579610704286}
+  - component: {fileID: 1879152835522703301}
   m_Layer: 7
   m_Name: Enemy laser station
   m_TagString: Untagged
@@ -303,7 +303,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.6
---- !u!114 &1237696579610704286
+--- !u!114 &1879152835522703301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2327489094893461769}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc87c3b4a1ce4f4daaed39ef04b0a62, type: 3}
+  m_Script: {fileID: 11500000, guid: fc2b63acba67eef4cb0e4b1ce3ef61c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField: 100
@@ -505,7 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427a5a53d0a4e7a4baac78c3d81286fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 1237696579610704286}
+  entity: {fileID: 0}
   hurtSound: {fileID: 8300000, guid: 051bd0c9e0b4e2f4f9cc9b0f3c41775b, type: 3}
 --- !u!1 &7951299348448520734
 GameObject:
