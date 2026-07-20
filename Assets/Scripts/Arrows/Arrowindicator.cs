@@ -11,8 +11,7 @@ public class Arrowindicator : MonoBehaviour
     }
     private void Update()
     {
-        ;
-        Debug.Log(targetT.gameObject.activeInHierarchy);
+     
         if (targetT == null)
         {
             Destroy(gameObject);
