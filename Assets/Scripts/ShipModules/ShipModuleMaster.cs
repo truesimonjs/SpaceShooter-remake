@@ -9,9 +9,10 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
 {
     public event EventHandler OnEnergyChange;
     [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
-    [SerializeField]private float energy = 100;
+    [SerializeField] public float energy { get; set; } = 100;
     private List<ShipShieldModule> tankModules = new();
     private List<ShipModule> modules = new();
+    public event EventHandler<ShipShieldModule> OnEquipShield;
     private void Awake()
     {
         energy = Mathf.Clamp(energy , 0, MaxEnergy);
@@ -27,8 +28,13 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     }
     public void EquipModule(ShipModule module)
     {
+        
         modules.Add(module);
-        if (module.GetType() == typeof(ShipShieldModule)) tankModules.Add(module as  ShipShieldModule);
+        if (module.GetType() == typeof(ShipShieldModule)) 
+        {
+            tankModules.Add(module as ShipShieldModule);
+            OnEquipShield?.Invoke(this, module as ShipShieldModule);
+        }
 
     }
     /*

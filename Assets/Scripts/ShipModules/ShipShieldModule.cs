@@ -29,7 +29,7 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
     public override void Start()
     {
         base.Start();
-        master.transform.parent.GetComponentInChildren<HealthBar>().ShieldStart(this);
+        master.transform.parent.GetComponentInChildren<EntityHealthBar>().ShieldStart(this);
     }
     private void Update()
     {

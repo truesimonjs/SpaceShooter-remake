@@ -30,16 +30,17 @@ public class Entity : MonoBehaviour, IDamageable
         if (damageModify == null) damageModify = GetComponentInChildren<IDamageModify>(); 
     }
 
- 
 
+    private bool dying = false;
     public virtual void TakeDamage(float damage = 1)
     {
-
+        if (dying) return;
         OnTakeDamage?.Invoke(this, EventArgs.Empty);
        if(damageModify != null) damage = damageModify.TryTakeDamage(damage);
         Health -= damage;
         if (Health <= 0) 
         {
+            dying = true;
             OnDeath?.Invoke(this, EventArgs.Empty);
         Destroy(gameObject, 0.1f);
         }
