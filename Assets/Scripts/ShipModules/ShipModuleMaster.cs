@@ -11,7 +11,6 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     public event EventHandler OnEnergyChange;
     [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
     [SerializeField] public float energy { get; set; } = 0;
-    //private List<ShipShieldModule> tankModules = new();
     private ShipShieldModule shield;
     public event EventHandler<ShipShieldModule> OnEquipShield;
     private void Awake()
@@ -44,17 +43,6 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
             OnEquipShield?.Invoke(this, shield);
         }
     }
-    /*
-    public float ChangeEnergyFloat(float value)
-    {
-        Debug.LogWarning("changeenergyfloat is deprecating");
-        float oldValue = energy;
-        energy = Mathf.Clamp(energy + value, 0, MaxEnergy);
-        OnEnergyChange?.Invoke(this, EventArgs.Empty);
-        
-       //Debug.Log(energy - oldValue);
-        return energy - oldValue;
-    }*/
     public bool ChangeEnergyBool(float value)
     {
         float oldValue = energy;
