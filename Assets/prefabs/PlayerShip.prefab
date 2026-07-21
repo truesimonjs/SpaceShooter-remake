@@ -215,7 +215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxEnergy>k__BackingField: 100
-  energy: 100
 --- !u!114 &2953838893972539221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energyRate: 1
+  <Stats>k__BackingField: {fileID: 0}
 --- !u!1 &4276057103804481517
 GameObject:
   m_ObjectHideFlags: 0

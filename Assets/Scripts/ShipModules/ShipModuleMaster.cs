@@ -15,6 +15,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     private ShipShieldModule shield;
     private StorageModule storageModule;
     public event EventHandler<ShipShieldModule> OnEquipShield;
+    public ShipModule[] AllShipModule = new ShipModule[5];
     private void Awake()
     {
         energy = Mathf.Clamp(energy , 0, MaxEnergy);
@@ -28,12 +29,42 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     public bool PickupModule(ShipModuleScriptable moduleSo)
     {
         if (storageModule == null) storageModule = (StorageModule)GetModuleComponent(typeof (StorageModule));
-        ShipModuleScriptable leftover = EquipModule(moduleSo, false);
+        ShipModuleScriptable leftover = EquipModuleNew(moduleSo);
         if (leftover != null)
         {
            return  storageModule.store(leftover);
         }
         return true;
+    }
+    public ShipModuleScriptable EquipModuleNew(ShipModuleScriptable moduleSo,int? targetIndex = null)
+    {
+        //ShipModule module;
+
+        if (targetIndex != null)
+        {
+            ShipModuleScriptable oldModuleSO = AllShipModule[targetIndex.Value].GenericStats;
+            if (AllShipModule[targetIndex.Value] != null) 
+            {
+                Destroy(AllShipModule[targetIndex.Value]);
+            }
+            AllShipModule[targetIndex.Value] = (ShipModule)gameObject.AddComponent(moduleSo.Type); ;
+            AllShipModule[targetIndex.Value].GenericStats = moduleSo;
+            return oldModuleSO;
+
+
+        }
+        for (int i = 0; i < AllShipModule.Length; i++)
+        {
+           
+            if (AllShipModule[i] == null)
+            {
+                AllShipModule[i] = (ShipModule)gameObject.AddComponent(moduleSo.Type);
+                AllShipModule[i].GenericStats = moduleSo;
+                return null;
+            }
+        }
+        return moduleSo;
+
     }
     public ShipModuleScriptable EquipModule(ShipModuleScriptable moduleSO, bool doSwap = true)
     {
