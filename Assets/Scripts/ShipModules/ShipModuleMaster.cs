@@ -38,18 +38,11 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     }
     public ShipModuleScriptable EquipModuleNew(ShipModuleScriptable moduleSo,int? targetIndex = null)
     {
-        //ShipModule module;
+        
 
         if (targetIndex != null)
         {
-            ShipModuleScriptable oldModuleSO = AllShipModule[targetIndex.Value].GenericStats;
-            if (AllShipModule[targetIndex.Value] != null) 
-            {
-                Destroy(AllShipModule[targetIndex.Value]);
-            }
-            AllShipModule[targetIndex.Value] = (ShipModule)gameObject.AddComponent(moduleSo.Type); ;
-            AllShipModule[targetIndex.Value].GenericStats = moduleSo;
-            return oldModuleSO;
+            return EquipModuleOnSlot(moduleSo, targetIndex.Value);
 
 
         }
@@ -58,13 +51,21 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
            
             if (AllShipModule[i] == null)
             {
-                AllShipModule[i] = (ShipModule)gameObject.AddComponent(moduleSo.Type);
-                AllShipModule[i].GenericStats = moduleSo;
-                return null;
+                return EquipModuleOnSlot(moduleSo,i);
             }
         }
         return moduleSo;
-
+    }
+    private ShipModuleScriptable EquipModuleOnSlot(ShipModuleScriptable moduleSo, int targetIndex)
+    {
+        ShipModuleScriptable oldModuleSO = AllShipModule[targetIndex]?.GenericStats;
+        if (AllShipModule[targetIndex] != null)
+        {
+            Destroy(AllShipModule[targetIndex]);
+        }
+        AllShipModule[targetIndex] = (ShipModule)gameObject.AddComponent(moduleSo.Type); ;
+        AllShipModule[targetIndex].GenericStats = moduleSo;
+        return oldModuleSO;
     }
     public ShipModuleScriptable EquipModule(ShipModuleScriptable moduleSO, bool doSwap = true)
     {
