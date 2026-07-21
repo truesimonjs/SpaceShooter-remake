@@ -212,10 +212,10 @@ PrefabInstance:
     - target: {fileID: 2566908436982202064, guid: 240f4cb2c4f3ae34785a9e1881a0f4a7, type: 3}
       propertyPath: moduleStats
       value: 
-      objectReference: {fileID: 11400000, guid: 9347f4cd3d2f69746bb8fd83009d9b6b, type: 2}
+      objectReference: {fileID: 11400000, guid: beec4562c1aa5be40b419fc5309e8da6, type: 2}
     - target: {fileID: 2956356875967666664, guid: 240f4cb2c4f3ae34785a9e1881a0f4a7, type: 3}
       propertyPath: m_Name
-      value: shield pickup (1)
+      value: Energy pickup
       objectReference: {fileID: 0}
     - target: {fileID: 9198559757666647293, guid: 240f4cb2c4f3ae34785a9e1881a0f4a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -427,7 +427,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2573643586786909889, guid: 72346df8586fb004da04aa358cda78aa, type: 3}
       propertyPath: m_text
-      value: 'build date: 21-7-2026-10:12'
+      value: 'build date: 21-7-2026-10:30'
       objectReference: {fileID: 0}
     - target: {fileID: 4195072322409342731, guid: 72346df8586fb004da04aa358cda78aa, type: 3}
       propertyPath: m_Name

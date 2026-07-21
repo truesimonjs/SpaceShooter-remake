@@ -13,7 +13,4 @@ public abstract class ShipModule : MonoBehaviour
         //master.EquipModule(this);
     }
 }
-public abstract class ShipModuleScriptable : ScriptableObject
-{
-    public abstract Type Type { get; }
-}
+
