@@ -28,15 +28,16 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     }
     public bool PickupModule(ShipModuleScriptable moduleSo)
     {
-        if (storageModule == null) storageModule = (StorageModule)GetModuleComponent(typeof (StorageModule));
-        ShipModuleScriptable leftover = EquipModuleNew(moduleSo);
+        
+        ShipModuleScriptable leftover = EquipModule(moduleSo);
         if (leftover != null)
         {
+            if (storageModule == null) return false;
            return  storageModule.store(leftover);
         }
         return true;
     }
-    public ShipModuleScriptable EquipModuleNew(ShipModuleScriptable moduleSo,int? targetIndex = null)
+    public ShipModuleScriptable EquipModule(ShipModuleScriptable moduleSo,int? targetIndex = null)
     {
         
 
@@ -73,35 +74,9 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
         }
         return oldModuleSO;
     }
-    public ShipModuleScriptable EquipModule(ShipModuleScriptable moduleSO, bool doSwap = true)
-    {
-        ShipModule module = GetModuleComponent(moduleSO.Type);
-        ShipModuleScriptable oldModuleSO = module.GenericStats;
-        if (oldModuleSO != null && !doSwap) return moduleSO;
-        module.GenericStats = moduleSO;
 
-        if (typeof(Module) == typeof(ShipShieldModule)) 
-        {
-            shield = (ShipShieldModule)module;
-            OnEquipShield?.Invoke(this, shield);
-        }
-        return oldModuleSO;
-    }
 
-    public ShipModule GetModuleComponent(Type t)
-    {
-        Component component;
-        if (TryGetComponent(t, out component))
-        {
 
-        }
-        else
-        {
-            component = gameObject.AddComponent(t);
-        }
-        ShipModule module = component as ShipModule;
-        return module;
-    }
     public bool ChangeEnergyBool(float value)
     {
         float oldValue = energy;
