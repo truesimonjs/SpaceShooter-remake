@@ -345,6 +345,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2566908436982202064, guid: 240f4cb2c4f3ae34785a9e1881a0f4a7, type: 3}
+      propertyPath: moduleStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
     - target: {fileID: 2956356875967666664, guid: 240f4cb2c4f3ae34785a9e1881a0f4a7, type: 3}
       propertyPath: m_Name
       value: shield pickup

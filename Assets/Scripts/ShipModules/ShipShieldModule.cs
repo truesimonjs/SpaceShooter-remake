@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class ShipShieldModule : ShipModule,IDamageAbleModule
@@ -6,6 +7,7 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
     //setup
     [field: SerializeField] public int Priority {  get; set;}
     [field: SerializeField] public ShieldShipScriptable Stats { get; private set; }
+    
     //public float maxShields = 10;
     //public float shieldsPerSec = 1;
     //public float CostPerShield = 1;
@@ -25,6 +27,9 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
             }
         }
     }
+
+    public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as ShieldShipScriptable; }
+
     private float timer = 0;
     public override void Start()
     {
