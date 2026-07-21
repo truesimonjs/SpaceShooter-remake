@@ -12,9 +12,9 @@ public class ModulePickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
            ShipModuleMaster moduleMaster = other.GetComponentInChildren<ShipModuleMaster>();
-            moduleMaster.EquipModule(moduleStats);
-            Destroy(gameObject);
-            
+            if (moduleMaster.PickupModule(moduleStats)) Destroy(gameObject);
+
+
         }
     }
 

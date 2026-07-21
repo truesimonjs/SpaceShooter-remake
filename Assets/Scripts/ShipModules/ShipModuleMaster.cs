@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEditor.EventSystems;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
     [SerializeField] public float energy { get; set; } = 0;
     private ShipShieldModule shield;
+    private StorageModule storageModule;
     public event EventHandler<ShipShieldModule> OnEquipShield;
     private void Awake()
     {
@@ -23,25 +25,44 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
         return damage;
         
     }
-    public void EquipModule(ShipModuleScriptable moduleObject)
+    public bool PickupModule(ShipModuleScriptable moduleSo)
     {
-        Type t = moduleObject.Type;
-        Component component;
-        if (TryGetComponent(t, out component))
+        if (storageModule == null) storageModule = (StorageModule)GetModuleComponent(typeof (StorageModule));
+        ShipModuleScriptable leftover = EquipModule(moduleSo, false);
+        if (leftover != null)
         {
-           
-        } else
-        {
-            component = gameObject.AddComponent(t);
+           return  storageModule.store(leftover);
         }
+        return true;
+    }
+    public ShipModuleScriptable EquipModule(ShipModuleScriptable moduleSO, bool doSwap = true)
+    {
+        ShipModule module = GetModuleComponent(moduleSO.Type);
+        ShipModuleScriptable oldModuleSO = module.GenericStats;
+        if (oldModuleSO != null && !doSwap) return moduleSO;
+        module.GenericStats = moduleSO;
 
-        ShipModule module = component as ShipModule;
-        module.GenericStats = moduleObject;
-        if (t == typeof(ShipShieldModule)) 
+        if (typeof(Module) == typeof(ShipShieldModule)) 
         {
             shield = (ShipShieldModule)module;
             OnEquipShield?.Invoke(this, shield);
         }
+        return oldModuleSO;
+    }
+
+    public ShipModule GetModuleComponent(Type t)
+    {
+        Component component;
+        if (TryGetComponent(t, out component))
+        {
+
+        }
+        else
+        {
+            component = gameObject.AddComponent(t);
+        }
+        ShipModule module = component as ShipModule;
+        return module;
     }
     public bool ChangeEnergyBool(float value)
     {
