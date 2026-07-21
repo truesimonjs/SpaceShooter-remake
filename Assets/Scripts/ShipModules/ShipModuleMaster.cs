@@ -53,6 +53,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
             {
                 return EquipModuleOnSlot(moduleSo,i);
             }
+
         }
         return moduleSo;
     }
@@ -65,6 +66,11 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
         }
         AllShipModule[targetIndex] = (ShipModule)gameObject.AddComponent(moduleSo.Type); ;
         AllShipModule[targetIndex].GenericStats = moduleSo;
+        if (moduleSo.Type == typeof(ShipShieldModule)) 
+        {
+            shield = (ShipShieldModule)AllShipModule[targetIndex];
+            OnEquipShield?.Invoke(this, shield);
+        }
         return oldModuleSO;
     }
     public ShipModuleScriptable EquipModule(ShipModuleScriptable moduleSO, bool doSwap = true)
