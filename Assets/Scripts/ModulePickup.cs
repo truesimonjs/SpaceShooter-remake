@@ -13,6 +13,7 @@ public class ModulePickup : MonoBehaviour
         {
            ShipModuleMaster moduleMaster = other.GetComponentInChildren<ShipModuleMaster>();
             moduleMaster.EquipModule(moduleStats);
+            Destroy(gameObject);
             
         }
     }

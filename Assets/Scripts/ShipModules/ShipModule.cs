@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Timeline;
@@ -11,4 +12,8 @@ public abstract class ShipModule : MonoBehaviour
         master = GetComponentInParent<ShipModuleMaster>();
         //master.EquipModule(this);
     }
+}
+public abstract class ShipModuleScriptable : ScriptableObject
+{
+    public abstract Type Type { get; }
 }

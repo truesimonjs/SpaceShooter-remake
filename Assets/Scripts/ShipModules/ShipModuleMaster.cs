@@ -10,7 +10,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
 {
     public event EventHandler OnEnergyChange;
     [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
-    [SerializeField] public float energy { get; set; } = 100;
+    [SerializeField] public float energy { get; set; } = 0;
     //private List<ShipShieldModule> tankModules = new();
     private ShipShieldModule shield;
     public event EventHandler<ShipShieldModule> OnEquipShield;
@@ -20,13 +20,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     }
     public float TryTakeDamage(float damage = 1)
     {
-        /*
-        foreach (var item in tankModules)
-        {
-           damage = item.TryTakeDamage(damage);
-            if (damage <= 0) break;
-        }
-        */
+        if (shield != null) damage = shield.TryTakeDamage(damage);
         return damage;
         
     }
@@ -47,6 +41,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
         if (t == typeof(ShipShieldModule)) 
         {
             shield = (ShipShieldModule)module;
+            OnEquipShield?.Invoke(this, shield);
         }
     }
     /*

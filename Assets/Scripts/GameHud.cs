@@ -16,8 +16,10 @@ public class GameHud : MonoBehaviour
     private void Start()
     {
         //energy
+
         moduleMaster = player.GetComponentInChildren<ShipModuleMaster>();
         moduleMaster.OnEnergyChange += ModuleMaster_OnEnergyChange; ;
+        energyImage.fillAmount = moduleMaster.energy / moduleMaster.MaxEnergy;
         //health
         entity = player.GetComponentInChildren<Entity>();
         entity.OnTakeDamage += Entity_OnTakeDamage;

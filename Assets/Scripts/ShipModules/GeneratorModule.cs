@@ -1,14 +1,15 @@
+using System;
 using UnityEngine;
 
-public class GeneratorModule : MonoBehaviour
+
+public class GeneratorModule : ShipModule
 {
-    private ShipModuleMaster master;
+ 
     [SerializeField] private float energyRate = 1;
     float timer = 0;
-    private void Start()
-    {
-        master = GetComponent<ShipModuleMaster>();
-    }
+    [field: SerializeField] public GeneratorModuleScriptable Stats { get; private set; }
+    public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as GeneratorModuleScriptable; }
+
 
     private void Update()
     {
@@ -20,4 +21,10 @@ public class GeneratorModule : MonoBehaviour
             timer = cd;
         }
     }
+}
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Modules/GeneratorModule", order = 1)]
+public class GeneratorModuleScriptable : ShipModuleScriptable
+{
+    public override Type Type => typeof(GeneratorModule);
+    public float energyRate = 1;
 }

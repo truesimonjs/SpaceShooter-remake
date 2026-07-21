@@ -6,6 +6,7 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
 {
     //setup
     [field: SerializeField] public int Priority {  get; set;}
+    public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as ShieldShipScriptable; }
     [field: SerializeField] public ShieldShipScriptable Stats { get; private set; }
     
     //public float maxShields = 10;
@@ -28,7 +29,7 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
         }
     }
 
-    public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as ShieldShipScriptable; }
+    
 
     private float timer = 0;
     public override void Start()
@@ -68,4 +69,12 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
         }
         return damage;
     }
+}
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Modules/ShieldModule", order = 1)]
+public class ShieldShipScriptable : ShipModuleScriptable
+{
+    public override Type Type => typeof(ShipShieldModule);
+    public float maxShields = 10;
+    public float shieldsPerSec = 1;
+    public float CostPerShield = 1;
 }
