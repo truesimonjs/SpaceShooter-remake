@@ -28,7 +28,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     }
     public bool PickupModule(ShipModuleScriptable moduleSo)
     {
-        
+        if (storageModule == null) storageModule = GetComponent<StorageModule>();
         ShipModuleScriptable leftover = EquipModule(moduleSo);
         if (leftover != null)
         {
@@ -60,6 +60,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     }
     private ShipModuleScriptable EquipModuleOnSlot(ShipModuleScriptable moduleSo, int targetIndex)
     {
+        if (moduleSo.IsUnique && CheckForExistingModule(moduleSo)) return moduleSo;
         ShipModuleScriptable oldModuleSO = AllShipModule[targetIndex]?.GenericStats;
         if (AllShipModule[targetIndex] != null)
         {
@@ -73,6 +74,14 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
             OnEquipShield?.Invoke(this, shield);
         }
         return oldModuleSO;
+    }
+    private bool CheckForExistingModule(ShipModuleScriptable moduleSO)
+    {
+        foreach (ShipModule module in AllShipModule)
+        {
+            if (moduleSO.Type == module?.GetType()) return true;
+        }
+        return false;
     }
 
 
