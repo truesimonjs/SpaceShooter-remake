@@ -5,7 +5,8 @@ public class EntityHealthBar : MonoBehaviour
 {
     [SerializeField] private Entity entity;
     [SerializeField] private Slider slider;
-    [SerializeField] private ShipShieldModule shipShield;
+    //[SerializeField] private ShipShieldModule shipShield;
+    [SerializeField] private ShipCore core;
     [SerializeField] private Image shieldImage;
 
     private void Start()
@@ -13,27 +14,25 @@ public class EntityHealthBar : MonoBehaviour
      
         if ( entity == null) entity = GetComponentInParent<Entity>(true);
         if (slider == null) slider = entity.GetComponentInChildren<Slider>(true);
+        if (core == null) core = entity.GetComponentInChildren<ShipCore>(true);
         slider.maxValue = entity.MaxHealth;
         slider.value = entity.Health;
+
+
         entity.HealthChange += Entity_HealthChange;
+        core.OnShieldChange += Core_OnShieldChange;
+        shieldImage.fillAmount = core.Shields / core.MaxShields;
 
-       if (shipShield== null) shieldImage.fillAmount = 0;
 
     }
-    public void ShieldStart(ShipShieldModule shield)
+
+    private void Core_OnShieldChange(object sender, System.EventArgs e)
     {
-    
-            shipShield = shield;
-            shipShield.OnShieldChange += ShipShield_OnShieldChange;
-            shieldImage.fillAmount = shipShield.shields / shipShield.Stats.maxShields;
-        
-      
-    }
-    private void ShipShield_OnShieldChange(object sender, System.EventArgs e)
-    {
-        shieldImage.fillAmount = shipShield.shields / shipShield.Stats.maxShields;
+        shieldImage.fillAmount = core.Shields / core.MaxShields;
         updateBar();
     }
+
+
 
     private void Entity_HealthChange(object sender, System.EventArgs e)
     {
@@ -44,14 +43,9 @@ public class EntityHealthBar : MonoBehaviour
     }
     private void updateBar()
     {
-        if ( shipShield == null)
-        {
-            slider.gameObject.SetActive(entity.Health < entity.MaxHealth);
-        }
-        else
-        {
-            slider.gameObject.SetActive(entity.Health < entity.MaxHealth ||shipShield.shields<shipShield.Stats.maxShields);
-        }
+     
+            slider.gameObject.SetActive(entity.Health < entity.MaxHealth ||core.Shields<core.MaxShields);
+        
     }
     private void LateUpdate()
     {

@@ -7,35 +7,37 @@ using UnityEditor.EventSystems;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class ShipModuleMaster : MonoBehaviour, IDamageModify
+public class ShipModuleMaster : MonoBehaviour
 {
 
     // energy
-    public event EventHandler OnEnergyChange;
-    [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
-    [SerializeField] public float energy { get; set; } = 0;
+    //public event EventHandler OnEnergyChange;
+   // [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
+    //[SerializeField] public float energy { get; set; } = 0;
     // shield
     private ShipShieldModule shield;
     public event EventHandler<ShipShieldModule> OnEquipShield;
     //
+    public event EventHandler OnModuleChange;
     private StorageModule storageModule;
     [SerializeField] public ShipModuleScriptable[] AllShipModuleSO = new ShipModuleScriptable[5];
     private ShipModule[] AllShipModuleComp = new ShipModule[5];
     private void Awake()
     {
-        energy = Mathf.Clamp(energy , 0, MaxEnergy);
+        
         //this feels like a band aid but it should let ships understand the modules you put on before game start
         for (int i = 0; i < AllShipModuleSO.Length; i++)
         {
             if (AllShipModuleSO[i] != null) ActivateModule(i); ;
         }
     }
+    /*
     public float TryTakeDamage(float damage = 1)
     {
         if (shield != null) damage = shield.TryTakeDamage(damage);
         return damage;
         
-    }
+    }*/
     public bool PickupModule(ShipModuleScriptable moduleSo)
     {
         if (storageModule == null) storageModule = GetComponent<StorageModule>();
@@ -75,7 +77,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
         AllShipModuleSO[targetIndex] = moduleSo;
         //setup the component and delete the old one
         ActivateModule(targetIndex);
-
+        OnModuleChange?.Invoke(this, EventArgs.Empty);
         
         return oldModuleSO;
     }
@@ -103,7 +105,7 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     }
 
 
-
+    /*
     public bool ChangeEnergyBool(float value)
     {
         float oldValue = energy;
@@ -114,4 +116,5 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
         return true;
      
     }
+    */
 }

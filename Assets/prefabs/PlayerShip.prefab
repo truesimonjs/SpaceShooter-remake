@@ -179,6 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7018584106584679985}
   - component: {fileID: 7503818712144819494}
+  - component: {fileID: 4375823228458982087}
   m_Layer: 0
   m_Name: Modules
   m_TagString: Untagged
@@ -214,10 +215,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxEnergy>k__BackingField: 100
-  AllStarterModules:
-  - {fileID: 11400000, guid: 229824e897601b74491874f477ff72ed, type: 2}
-  - {fileID: 11400000, guid: beec4562c1aa5be40b419fc5309e8da6, type: 2}
+  AllShipModuleSO:
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &4375823228458982087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4235051471621892394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 612a28b0e64d25a40ad34d3b92e135d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxEnergy>k__BackingField: 100
 --- !u!1 &4276057103804481517
 GameObject:
   m_ObjectHideFlags: 0

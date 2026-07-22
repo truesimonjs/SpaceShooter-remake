@@ -8,10 +8,6 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
     [field: SerializeField] public int Priority {  get; set;}
     public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as ShieldShipScriptable; }
     [field: SerializeField] public ShieldShipScriptable Stats { get; private set; }
-    
-    //public float maxShields = 10;
-    //public float shieldsPerSec = 1;
-    //public float CostPerShield = 1;
     //
     public event EventHandler OnShieldChange;
     public float shields = 0;
@@ -22,7 +18,7 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
         {
             if (value != shields)
             {
-
+                
                 shields = value;
                 OnShieldChange?.Invoke(this, EventArgs.Empty);
             }
@@ -35,7 +31,7 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
     public override void Start()
     {
         base.Start();
-        master.transform.parent.GetComponentInChildren<EntityHealthBar>().ShieldStart(this);
+        core = GetComponent<ShipCore>();
     }
     private void Update()
     {
@@ -47,9 +43,9 @@ public class ShipShieldModule : ShipModule,IDamageAbleModule
 
             for (int i = 0; i < Stats.shieldsPerSec; i++)
             {
-                if (Shields >= Stats.maxShields) break;
+                if (core.Shields >= core.MaxShields) break;
                
-                if (master.ChangeEnergyBool(-Stats.CostPerShield)) Shields += 1;
+                if (core.ChangeEnergyBool(-Stats.CostPerShield)) core.Shields += 1;
             }
             timer = cooldown;
         }

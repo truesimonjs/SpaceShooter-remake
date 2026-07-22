@@ -5,39 +5,38 @@ public class GameHud : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     //energy
-    private ShipModuleMaster moduleMaster;
+    private ShipCore core;
     [SerializeField] private Image energyImage;
     //health
     private Entity entity;
     [SerializeField] private Image healthImage;
     //
-    private ShipShieldModule shieldModule;
+    //private ShipShieldModule shieldModule;
     [SerializeField]private Image shieldImage;
     private void Start()
     {
         //energy
 
-        moduleMaster = player.GetComponentInChildren<ShipModuleMaster>();
-        moduleMaster.OnEnergyChange += ModuleMaster_OnEnergyChange; ;
-        energyImage.fillAmount = moduleMaster.energy / moduleMaster.MaxEnergy;
+        core = player.GetComponentInChildren<ShipCore>();
+        core.OnEnergyChange += Core_OnEnergyChange; ; ;
+        energyImage.fillAmount = core.energy / core.MaxEnergy;
         //health
         entity = player.GetComponentInChildren<Entity>();
         entity.OnTakeDamage += Entity_OnTakeDamage;
         //
-        moduleMaster.OnEquipShield += ModuleMaster_OnEquipShield;
+        core.OnShieldChange += Core_OnShieldChange;
         shieldImage.fillAmount = 0;
+        
     }
 
-    private void ModuleMaster_OnEquipShield(object sender, ShipShieldModule e)
+    private void Core_OnEnergyChange(object sender, System.EventArgs e)
     {
-        shieldModule = e;
-        shieldModule.OnShieldChange += ShieldModule_OnShieldChange;
-        shieldImage.fillAmount = shieldModule.shields / shieldModule.Stats.maxShields;
+        energyImage.fillAmount = core.energy / core.MaxEnergy; 
     }
 
-    private void ShieldModule_OnShieldChange(object sender, System.EventArgs e)
+    private void Core_OnShieldChange(object sender, System.EventArgs e)
     {
-        shieldImage.fillAmount = shieldModule.shields / shieldModule.Stats.maxShields;
+        shieldImage.fillAmount = core.Shields / core.MaxShields;
     }
 
     private void Entity_OnTakeDamage(object sender, System.EventArgs e)
@@ -45,9 +44,6 @@ public class GameHud : MonoBehaviour
         healthImage.fillAmount = entity.Health / entity.MaxHealth;
     }
 
-    private void ModuleMaster_OnEnergyChange(object sender, System.EventArgs e)
-    {
-        energyImage.fillAmount = moduleMaster.energy / moduleMaster.MaxEnergy;
-    }
+ 
 
 }

@@ -17,7 +17,7 @@ public class GeneratorModule : ShipModule
         timer -= Time.deltaTime;
         if (timer <= 0) 
         {
-            master.ChangeEnergyBool(energyRate);
+            core.ChangeEnergyBool(energyRate);
             timer = cd;
         }
     }
