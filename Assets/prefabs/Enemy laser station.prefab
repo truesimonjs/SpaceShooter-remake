@@ -517,8 +517,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7590648663042478638}
   - component: {fileID: 6667203049962187021}
-  - component: {fileID: 3194541915504970996}
-  - component: {fileID: 3811363551543186596}
   m_Layer: 7
   m_Name: Modules
   m_TagString: Untagged
@@ -554,35 +552,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxEnergy>k__BackingField: 50
---- !u!114 &3194541915504970996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7951299348448520734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bb485a2a583d5f47b08d6cc7f980da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Priority>k__BackingField: 0
-  <Stats>k__BackingField: {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
-  shields: 0
---- !u!114 &3811363551543186596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7951299348448520734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b911b8f8bd4274fb7b0c194f03f70e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyRate: 1
-  <Stats>k__BackingField: {fileID: 11400000, guid: beec4562c1aa5be40b419fc5309e8da6, type: 2}
+  AllStarterModules:
+  - {fileID: 11400000, guid: beec4562c1aa5be40b419fc5309e8da6, type: 2}
+  - {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
 --- !u!1001 &3399004725629796710
 PrefabInstance:
   m_ObjectHideFlags: 0

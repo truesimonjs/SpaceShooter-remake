@@ -179,7 +179,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7018584106584679985}
   - component: {fileID: 7503818712144819494}
-  - component: {fileID: 2953838893972539221}
   m_Layer: 0
   m_Name: Modules
   m_TagString: Untagged
@@ -215,20 +214,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxEnergy>k__BackingField: 100
---- !u!114 &2953838893972539221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4235051471621892394}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b911b8f8bd4274fb7b0c194f03f70e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyRate: 1
-  <Stats>k__BackingField: {fileID: 0}
+  AllStarterModules:
+  - {fileID: 11400000, guid: 229824e897601b74491874f477ff72ed, type: 2}
+  - {fileID: 11400000, guid: beec4562c1aa5be40b419fc5309e8da6, type: 2}
+  - {fileID: 0}
 --- !u!1 &4276057103804481517
 GameObject:
   m_ObjectHideFlags: 0
