@@ -4,7 +4,7 @@ using System;
 public class ShieldShipScriptable : ShipModuleScriptable
 {
     public override Type Type => typeof(ShipShieldModule);
-    public override bool IsUnique => true;
+    public override bool IsUnique => false;
     public float maxShields = 10;
     public float shieldsPerSec = 1;
     public float CostPerShield = 1;

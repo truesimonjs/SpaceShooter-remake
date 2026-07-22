@@ -10,13 +10,9 @@ using static UnityEngine.Rendering.DebugUI;
 public class ShipModuleMaster : MonoBehaviour
 {
 
-    // energy
-    //public event EventHandler OnEnergyChange;
-   // [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
-    //[SerializeField] public float energy { get; set; } = 0;
-    // shield
-    private ShipShieldModule shield;
-    public event EventHandler<ShipShieldModule> OnEquipShield;
+
+
+
     //
     public event EventHandler OnModuleChange;
     private StorageModule storageModule;
@@ -31,13 +27,7 @@ public class ShipModuleMaster : MonoBehaviour
             if (AllShipModuleSO[i] != null) ActivateModule(i); ;
         }
     }
-    /*
-    public float TryTakeDamage(float damage = 1)
-    {
-        if (shield != null) damage = shield.TryTakeDamage(damage);
-        return damage;
-        
-    }*/
+
     public bool PickupModule(ShipModuleScriptable moduleSo)
     {
         if (storageModule == null) storageModule = GetComponent<StorageModule>();
@@ -88,12 +78,6 @@ public class ShipModuleMaster : MonoBehaviour
        if (AllShipModuleComp[index] != null) Destroy(AllShipModuleComp[index]);
         AllShipModuleComp[index] = (ShipModule)gameObject.AddComponent(newModuleSO.Type); ;
         AllShipModuleComp[index].GenericStats = newModuleSO;
-        //let the shieldbar know if there's a new shield in town
-        if (newModuleSO.Type == typeof(ShipShieldModule))
-        {
-            shield = (ShipShieldModule)AllShipModuleComp[index];
-            OnEquipShield?.Invoke(this, shield);
-        }
     }
     private bool CheckForExistingModule(ShipModuleScriptable moduleSO)
     {
@@ -103,18 +87,4 @@ public class ShipModuleMaster : MonoBehaviour
         }
         return false;
     }
-
-
-    /*
-    public bool ChangeEnergyBool(float value)
-    {
-        float oldValue = energy;
-        bool hasEnough = MaxEnergy >= energy+value && energy + value >= 0;
-        if (!hasEnough) return false;
-        energy += value;
-        OnEnergyChange?.Invoke(this, EventArgs.Empty);
-        return true;
-     
-    }
-    */
 }

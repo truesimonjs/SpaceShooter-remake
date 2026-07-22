@@ -5,7 +5,7 @@ using UnityEngine;
 public class GeneratorModule : ShipModule
 {
  
-    [SerializeField] private float energyRate = 1;
+ 
     float timer = 0;
     [field: SerializeField] public GeneratorModuleScriptable Stats { get; private set; }
     public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as GeneratorModuleScriptable; }
@@ -17,7 +17,7 @@ public class GeneratorModule : ShipModule
         timer -= Time.deltaTime;
         if (timer <= 0) 
         {
-            core.ChangeEnergyBool(energyRate);
+            core.ChangeEnergyBool(Stats.energyRate);
             timer = cd;
         }
     }
