@@ -33,7 +33,10 @@ public class ShipCore : MonoBehaviour, IDamageModify
     }
     private void Start()
     {
+
+
         moduleMaster = GetComponent<ShipModuleMaster>();
+        if (moduleMaster == null) return;
         moduleMaster.OnModuleChange += ModuleMaster_OnModuleChange;
         ModuleMaster_OnModuleChange(this, EventArgs.Empty);
     }

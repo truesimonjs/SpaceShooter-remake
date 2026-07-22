@@ -781,6 +781,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6755663377394799187, guid: b792cb9beacccc24da7767f496a69669, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7574601849180445053, guid: b792cb9beacccc24da7767f496a69669, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7814987152202479410, guid: b792cb9beacccc24da7767f496a69669, type: 3}
       propertyPath: m_Density
       value: 2

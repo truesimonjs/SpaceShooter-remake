@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class EntityHealthBar : MonoBehaviour
 {
@@ -20,15 +21,16 @@ public class EntityHealthBar : MonoBehaviour
 
 
         entity.HealthChange += Entity_HealthChange;
+
         core.OnShieldChange += Core_OnShieldChange;
-        shieldImage.fillAmount = core.Shields / core.MaxShields;
+        Core_OnShieldChange(this, EventArgs.Empty);
 
 
     }
 
     private void Core_OnShieldChange(object sender, System.EventArgs e)
     {
-        shieldImage.fillAmount = core.Shields / core.MaxShields;
+        shieldImage.fillAmount = core.MaxShields == 0? 0:core.Shields / core.MaxShields;
         updateBar();
     }
 
