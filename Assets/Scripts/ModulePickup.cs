@@ -5,6 +5,10 @@ public class ModulePickup : MonoBehaviour
 {
     //[SerializeField] private GameObject Module;
     [SerializeField] private ShipModuleScriptable moduleStats;
+    private void Start()
+    {
+        GetComponent<SpriteRenderer>().sprite = moduleStats.icon;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("triggerenter");

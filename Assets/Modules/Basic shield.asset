@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd09eadb89b8d4c41b42903ecbf7be6f, type: 3}
   m_Name: Basic shield
   m_EditorClassIdentifier: 
+  icon: {fileID: -4324734368053313042, guid: dce0d4e74b7876e45860415a17252456, type: 3}
   maxShields: 10
   shieldsPerSec: 1
   CostPerShield: 5

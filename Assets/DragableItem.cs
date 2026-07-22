@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Transform parent;
+    public Transform parent;
     public int index = 0;
     public Image image;
     private void Awake()
