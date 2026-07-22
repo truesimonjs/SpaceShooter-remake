@@ -21,6 +21,10 @@ public class ModulePickup : MonoBehaviour
 
         }
     }
+    private void OnValidate()
+    {
+       if (GetComponent<SpriteRenderer>().sprite != moduleStats.icon) GetComponent<SpriteRenderer>().sprite = moduleStats.icon;
+    }
 
 
 }

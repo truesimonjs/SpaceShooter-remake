@@ -3,6 +3,7 @@ using static UnityEditor.Progress;
 
 public class InventoryMaster : MonoBehaviour
 {
+    public static InventoryMaster instance;
     public GameObject slotPrefab;
     public GameObject StorageGrid;
     public GameObject EquippedGrid;
@@ -13,11 +14,12 @@ public class InventoryMaster : MonoBehaviour
     private InventorySlot[] equippedSlots;
     private void Awake()
     {
-        
+        instance = this;
+        gameObject.SetActive(false);
     }
-
     private void Start()
     {
+       
         moduleMaster = player.GetComponentInChildren<ShipModuleMaster>();
         equippedSlots = new InventorySlot[moduleMaster.AllShipModuleSO.Length];
         //

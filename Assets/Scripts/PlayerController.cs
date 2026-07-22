@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
         {
             AudioListener.volume = AudioListener.volume == 0 ? 0.25f : 0;
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            GameObject go = InventoryMaster.instance.gameObject;
+            go.SetActive(!go.activeSelf);
+            
+        }
     }
     private void FixedUpdate()
     {
@@ -38,5 +44,6 @@ public class PlayerController : MonoBehaviour
         Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         ship.MoveShip(playerMove);
     }
+    
 
 }
