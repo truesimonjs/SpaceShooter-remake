@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7503818712144819494, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: AllShipModuleSO.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2953838893972539221, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
     m_RemovedGameObjects: []
@@ -992,7 +996,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2573643586786909889, guid: 72346df8586fb004da04aa358cda78aa, type: 3}
       propertyPath: m_text
-      value: 'build date: 22-7-2026-11:28'
+      value: 'build date: 22-7-2026-14:55'
       objectReference: {fileID: 0}
     - target: {fileID: 4195072322409342731, guid: 72346df8586fb004da04aa358cda78aa, type: 3}
       propertyPath: m_Name

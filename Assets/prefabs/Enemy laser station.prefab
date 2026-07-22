@@ -552,9 +552,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxEnergy>k__BackingField: 50
-  AllStarterModules:
+  AllShipModuleSO:
   - {fileID: 11400000, guid: beec4562c1aa5be40b419fc5309e8da6, type: 2}
   - {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &3399004725629796710
 PrefabInstance:
   m_ObjectHideFlags: 0

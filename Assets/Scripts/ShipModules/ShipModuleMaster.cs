@@ -9,21 +9,25 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class ShipModuleMaster : MonoBehaviour, IDamageModify
 {
+
+    // energy
     public event EventHandler OnEnergyChange;
     [field:SerializeField] public float MaxEnergy { get; private set; } = 100;
     [SerializeField] public float energy { get; set; } = 0;
+    // shield
     private ShipShieldModule shield;
-    private StorageModule storageModule;
     public event EventHandler<ShipShieldModule> OnEquipShield;
-    [SerializeField] private ShipModuleScriptable[] AllStarterModules;
+    //
+    private StorageModule storageModule;
+    [SerializeField] public ShipModuleScriptable[] AllShipModuleSO = new ShipModuleScriptable[5];
     private ShipModule[] AllShipModuleComp = new ShipModule[5];
     private void Awake()
     {
         energy = Mathf.Clamp(energy , 0, MaxEnergy);
         //this feels like a band aid but it should let ships understand the modules you put on before game start
-        for (int i = 0; i < AllStarterModules.Length; i++)
+        for (int i = 0; i < AllShipModuleSO.Length; i++)
         {
-            if (AllStarterModules[i] != null) EquipModuleOnSlot(AllStarterModules[i], i);
+            if (AllShipModuleSO[i] != null) ActivateModule(i); ;
         }
     }
     public float TryTakeDamage(float damage = 1)
@@ -53,10 +57,10 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
 
 
         }
-        for (int i = 0; i < AllShipModuleComp.Length; i++)
+        for (int i = 0; i < AllShipModuleSO.Length; i++)
         {
            
-            if (AllShipModuleComp[i] == null)
+            if (AllShipModuleSO[i] == null)
             {
                 return EquipModuleOnSlot(moduleSo,i);
             }
@@ -67,22 +71,27 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     private ShipModuleScriptable EquipModuleOnSlot(ShipModuleScriptable moduleSo, int targetIndex)
     {
         if (moduleSo.IsUnique && CheckForExistingModule(moduleSo)) return moduleSo;
-        ShipModuleScriptable oldModuleSO = AllShipModuleComp[targetIndex]?.GenericStats;
+        ShipModuleScriptable oldModuleSO = AllShipModuleSO[targetIndex];
+        AllShipModuleSO[targetIndex] = moduleSo;
         //setup the component and delete the old one
-        if (AllShipModuleComp[targetIndex] != null)
-        {
-            Destroy(AllShipModuleComp[targetIndex]);
-        }
-        AllShipModuleComp[targetIndex] = (ShipModule)gameObject.AddComponent(moduleSo.Type); ;
-        AllShipModuleComp[targetIndex].GenericStats = moduleSo;
+        ActivateModule(targetIndex);
 
+        
+        return oldModuleSO;
+    }
+    private void ActivateModule(int index)
+    {
+        ShipModuleScriptable newModuleSO = AllShipModuleSO[index];
+
+       if (AllShipModuleComp[index] != null) Destroy(AllShipModuleComp[index]);
+        AllShipModuleComp[index] = (ShipModule)gameObject.AddComponent(newModuleSO.Type); ;
+        AllShipModuleComp[index].GenericStats = newModuleSO;
         //let the shieldbar know if there's a new shield in town
-        if (moduleSo.Type == typeof(ShipShieldModule)) 
+        if (newModuleSO.Type == typeof(ShipShieldModule))
         {
-            shield = (ShipShieldModule)AllShipModuleComp[targetIndex];
+            shield = (ShipShieldModule)AllShipModuleComp[index];
             OnEquipShield?.Invoke(this, shield);
         }
-        return oldModuleSO;
     }
     private bool CheckForExistingModule(ShipModuleScriptable moduleSO)
     {
