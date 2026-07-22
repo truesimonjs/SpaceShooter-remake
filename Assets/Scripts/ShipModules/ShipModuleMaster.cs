@@ -62,12 +62,15 @@ public class ShipModuleMaster : MonoBehaviour, IDamageModify
     {
         if (moduleSo.IsUnique && CheckForExistingModule(moduleSo)) return moduleSo;
         ShipModuleScriptable oldModuleSO = AllShipModule[targetIndex]?.GenericStats;
+        //setup the component and delete the old one
         if (AllShipModule[targetIndex] != null)
         {
             Destroy(AllShipModule[targetIndex]);
         }
         AllShipModule[targetIndex] = (ShipModule)gameObject.AddComponent(moduleSo.Type); ;
         AllShipModule[targetIndex].GenericStats = moduleSo;
+
+        //let the shieldbar know if there's a new shield in town
         if (moduleSo.Type == typeof(ShipShieldModule)) 
         {
             shield = (ShipShieldModule)AllShipModule[targetIndex];
