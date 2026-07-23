@@ -18,9 +18,10 @@ public class ShipCore : MonoBehaviour, IDamageModify
         get => shields;
         set
         {
+            value = Mathf.Clamp(value, 0, MaxShields);
+            
             if (value != shields)
             {
-
                 shields = value;
                 OnShieldChange?.Invoke(this, EventArgs.Empty);
             }
@@ -53,6 +54,7 @@ public class ShipCore : MonoBehaviour, IDamageModify
                 MaxShields += shield.maxShields;
             }
         }
+        Shields = Shields;
     }
     public bool ChangeEnergyBool(float value)
     {
