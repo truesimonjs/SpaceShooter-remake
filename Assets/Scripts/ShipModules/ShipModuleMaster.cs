@@ -15,7 +15,7 @@ public class ShipModuleMaster : MonoBehaviour
 
     //
     public event EventHandler OnModuleChange;
-    private StorageModule storageModule;
+    private ShipCore storageModule;
     [SerializeField] public ShipModuleScriptable[] AllShipModuleSO = new ShipModuleScriptable[5];
     private ShipModule[] AllShipModuleComp = new ShipModule[5];
     private void Awake()
@@ -30,12 +30,12 @@ public class ShipModuleMaster : MonoBehaviour
 
     public bool PickupModule(ShipModuleScriptable moduleSo)
     {
-        if (storageModule == null) storageModule = GetComponent<StorageModule>();
+        if (storageModule == null) storageModule = GetComponent<ShipCore>();
         ShipModuleScriptable leftover = EquipModule(moduleSo);
         if (leftover != null)
         {
             if (storageModule == null) return false;
-           return  storageModule.store(leftover);
+           return  storageModule.StoreModule(leftover);
         }
         return true;
     }

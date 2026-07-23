@@ -9,7 +9,7 @@ public class InventoryMaster : MonoBehaviour
     public GameObject EquippedGrid;
     public GameObject player;
     private ShipModuleMaster moduleMaster;
-    private StorageModule storageModule;
+    private ShipCore storageModule;
     private InventorySlot[] storageSlots;
     private InventorySlot[] equippedSlots;
     private void Awake()
@@ -23,8 +23,8 @@ public class InventoryMaster : MonoBehaviour
         moduleMaster = player.GetComponentInChildren<ShipModuleMaster>();
         equippedSlots = new InventorySlot[moduleMaster.AllShipModuleSO.Length];
         //
-        storageModule = player.GetComponentInChildren<StorageModule>();
-        storageSlots = new InventorySlot[storageModule.Stats.Capacity];
+        storageModule = player.GetComponentInChildren<ShipCore>();
+        storageSlots = new InventorySlot[storageModule.StorageCapacity];
         for (int i = 0; i < storageSlots.Length; i++)
         {
             InventorySlot slot = Instantiate(slotPrefab, StorageGrid.transform).GetComponent<InventorySlot>();
@@ -47,8 +47,8 @@ public class InventoryMaster : MonoBehaviour
     }
     public void slotDragged(int EquippedIndex, int storageIndex)
     {
-       ShipModuleScriptable leftover = moduleMaster.EquipModule(storageModule.modules[storageIndex], EquippedIndex);
-        storageModule.modules[storageIndex] = leftover;
+       ShipModuleScriptable leftover = moduleMaster.EquipModule(storageModule.storedModules[storageIndex], EquippedIndex);
+        storageModule.storedModules[storageIndex] = leftover;
     }
     private void Update()
     {
@@ -57,9 +57,9 @@ public class InventoryMaster : MonoBehaviour
         {
             equippedSlots[i].ModuleSO = moduleMaster.AllShipModuleSO[i];
         }
-        for (int i = 0; i < storageModule.modules.Count; i++)
+        for (int i = 0; i < storageModule.storedModules.Count; i++)
         {
-            storageSlots[i].ModuleSO = storageModule.modules[i];
+            storageSlots[i].ModuleSO = storageModule.storedModules[i];
         }
     }
 

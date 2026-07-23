@@ -1,32 +1,13 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class ShipCore : MonoBehaviour, IDamageModify
 {
-    // energy
-    public event EventHandler OnEnergyChange;
-    [field: SerializeField] public float MaxEnergy { get; private set; } = 100;
-    [SerializeField] public float energy { get; set; } = 0;
-    //shields
-    public event EventHandler OnShieldChange;
-    public float MaxShields {  get; private set; }
-    private float shields = 0;
-    public float Shields
-    {
-        get => shields;
-        set
-        {
-            value = Mathf.Clamp(value, 0, MaxShields);
-            
-            if (value != shields)
-            {
-                shields = value;
-                OnShieldChange?.Invoke(this, EventArgs.Empty);
-            }
-        }
-    }
+
+    public int startingCapacity = 1;
     private ShipModuleMaster moduleMaster;
     private void Awake()
     {
@@ -44,6 +25,71 @@ public class ShipCore : MonoBehaviour, IDamageModify
 
     private void ModuleMaster_OnModuleChange(object sender, EventArgs e)
     {
+        Debug.Log("e");
+        MaxShieldUpdate();
+        StorageCapacityUpdate();
+    }
+    //Storage
+    public List<ShipModuleScriptable> storedModules = new();
+    public int StorageCapacity {  get; private set; }
+    public bool StoreModule(ShipModuleScriptable module)
+    {
+        if (storedModules.Count < StorageCapacity)
+        {
+            storedModules.Add(module);
+            return true;
+        }
+        return false;
+    }
+    public void StorageCapacityUpdate()
+    {
+        StorageCapacity = startingCapacity;
+        foreach (var item in moduleMaster.AllShipModuleSO)
+        {
+           
+            if (item == null) continue;
+            if (item.GetType() == typeof(StorageSO))
+            {
+                StorageSO storageSO = (StorageSO)item;
+                StorageCapacity += storageSO.Capacity;
+            }
+        }
+       
+    }
+    // energy
+    public event EventHandler OnEnergyChange;
+    [field: SerializeField] public float MaxEnergy { get; private set; } = 100;
+    [SerializeField] public float energy { get; set; } = 0;
+    public bool ChangeEnergyBool(float value)
+    {
+        float oldValue = energy;
+        bool hasEnough = MaxEnergy >= energy + value && energy + value >= 0;
+        if (!hasEnough) return false;
+        energy += value;
+        OnEnergyChange?.Invoke(this, EventArgs.Empty);
+        return true;
+
+    }
+    //shields
+    public event EventHandler OnShieldChange;
+    public float MaxShields { get; private set; }
+    private float shields = 0;
+    public float Shields
+    {
+        get => shields;
+        set
+        {
+            value = Mathf.Clamp(value, 0, MaxShields);
+
+            if (value != shields)
+            {
+                shields = value;
+                OnShieldChange?.Invoke(this, EventArgs.Empty);
+            }
+        }
+    }
+    public void MaxShieldUpdate()
+    {
         MaxShields = 0;
         foreach (var item in moduleMaster.AllShipModuleSO)
         {
@@ -55,16 +101,6 @@ public class ShipCore : MonoBehaviour, IDamageModify
             }
         }
         Shields = Shields;
-    }
-    public bool ChangeEnergyBool(float value)
-    {
-        float oldValue = energy;
-        bool hasEnough = MaxEnergy >= energy + value && energy + value >= 0;
-        if (!hasEnough) return false;
-        energy += value;
-        OnEnergyChange?.Invoke(this, EventArgs.Empty);
-        return true;
-
     }
 
     public float TryTakeDamage(float damage = 1)
