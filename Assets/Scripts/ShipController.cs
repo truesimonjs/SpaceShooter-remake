@@ -45,21 +45,25 @@ public class ShipController : MonoBehaviour
     }
     public virtual void MoveShip(Vector2 direction)
     {
-        MoveShipDirectionalSpeeds(direction);
-        return;
         rb.linearVelocity = Vector2.zero;
         if (direction.magnitude < 0.5f) return;
+        MoveShipDirectionalSpeeds(direction);
+        return;
+    
         rb.linearVelocity = direction.normalized * shipSpeed;
     }
     public float forwardMultiplier = 1.2f;
     public float backwardMultiplier = .5f;
     public float sidewardMultiplier = .7f;
     public float speedResult;
+    public float yResultTest;
+    public float xResultTest;
+    public float speedMultiplierTest;
     public virtual void MoveShipDirectionalSpeeds(Vector2 direction)
     {
+        
+    
         direction = direction.normalized;
-        rb.linearVelocity = Vector2.zero;
-        if (direction.magnitude < 0.5f) return;
         //
         float dotResult = Vector3.Dot(direction, transform.up);
         Debug.Log(Vector3.Dot(transform.up, direction));
@@ -67,7 +71,28 @@ public class ShipController : MonoBehaviour
         Vector2 movementVector = direction * speedMultiplier;
         speedResult = movementVector.magnitude;
         rb.linearVelocity = movementVector;
-
+        yResultTest = movementVector.y;
+        xResultTest = movementVector.x;
+        speedMultiplierTest = speedMultiplier;
+    
+    }
+    public virtual void MoveShipDirectionalSpeeds2(Vector2 direction)
+    {
+    
+        direction = direction.normalized;
+        Vector2 movementVector = new Vector2(direction.x*sidewardMultiplier, direction.y >0? direction.y*forwardMultiplier:direction.y*backwardMultiplier);
+        Vector2 localDirection = transform.worldToLocalMatrix * direction;
+        float xLimit = localDirection.x != 0 ? sidewardMultiplier : Mathf.Infinity;
+        float yLimit;
+        if (localDirection.y > 0) yLimit = forwardMultiplier;
+        else if (localDirection.y == 0) yLimit = Mathf.Infinity;
+        else yLimit = backwardMultiplier;
+        float speedMultiplier = Mathf.Min(xLimit, yLimit);
+        //rb.linearVelocity = transform.localToWorldMatrix* movementVector;
+        rb.linearVelocity = direction * speedMultiplier;
+        speedResult = rb.linearVelocity.magnitude;
+        xResultTest = rb.linearVelocity.x;
+        yResultTest = rb.linearVelocity.y;
     }
     public virtual void MoveTowards(Vector2 destination, float distance = 0.25f)
     {

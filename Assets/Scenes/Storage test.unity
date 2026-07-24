@@ -192,15 +192,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: forwardMultiplier
-      value: 0.5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: backwardMultiplier
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: sidewardMultiplier
-      value: 0.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7503818712144819494, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: AllShipModuleSO.Array.size
