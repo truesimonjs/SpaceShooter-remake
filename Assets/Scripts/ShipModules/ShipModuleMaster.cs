@@ -14,14 +14,22 @@ public class ShipModuleMaster : MonoBehaviour
     private ShipCore storageModule;
     [SerializeField] public ShipModuleScriptable[] AllShipModuleSO = new ShipModuleScriptable[5];
     private ShipModule[] AllShipModuleComp = new ShipModule[5];
+    public Dictionary<string, ShipModule> abillityModules = new();
+
     private void Awake()
     {
         
         //this feels like a band aid but it should let ships understand the modules you put on before game start
         for (int i = 0; i < AllShipModuleSO.Length; i++)
         {
-            if (AllShipModuleSO[i] != null) ActivateModule(i); ;
+            if (AllShipModuleSO[i] != null) InitModule(i); ;
         }
+    }
+   public void EngageModule(string activator)
+    {
+        Debug.Log("shipmaster engagemodule called");
+        abillityModules.GetValueOrDefault(activator)?.UseAbillity();
+        Debug.Log(abillityModules.GetValueOrDefault(activator));
     }
 
     public bool PickupModule(ShipModuleScriptable moduleSo)
@@ -62,12 +70,12 @@ public class ShipModuleMaster : MonoBehaviour
         ShipModuleScriptable oldModuleSO = AllShipModuleSO[targetIndex];
         AllShipModuleSO[targetIndex] = moduleSo;
         //setup the component and delete the old one
-        ActivateModule(targetIndex);
+        InitModule(targetIndex);
         OnModuleChange?.Invoke(this, EventArgs.Empty);
         
         return oldModuleSO;
     }
-    private void ActivateModule(int index)
+    private void InitModule(int index)
     {
         ShipModuleScriptable newModuleSO = AllShipModuleSO[index];
 

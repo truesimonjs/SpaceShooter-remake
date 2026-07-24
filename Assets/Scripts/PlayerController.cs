@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
             go.SetActive(!go.activeSelf);
             
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Debug.Log("lshift presseed");
+            GetComponentInChildren<ShipModuleMaster>().EngageModule("Boost");
+        }
     }
     private void FixedUpdate()
     {

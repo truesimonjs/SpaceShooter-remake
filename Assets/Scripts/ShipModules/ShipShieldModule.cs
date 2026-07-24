@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShipShieldModule : ShipModule<ShieldShipScriptable>
 {
     //setup
-    [field: SerializeField] public int Priority {  get; set;}
     //public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as ShieldShipScriptable; }
 
     

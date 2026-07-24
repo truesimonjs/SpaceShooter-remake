@@ -8,6 +8,10 @@ public abstract class ShipModule : MonoBehaviour
     protected ShipModuleMaster master;
     protected ShipCore core;
     public abstract ShipModuleScriptable GenericStats { get; set; }
+    public virtual void UseAbillity()
+    {
+
+    }
     public virtual void Start()
     {
         master = GetComponentInParent<ShipModuleMaster>();
