@@ -2,12 +2,11 @@ using System;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
-public class ShipShieldModule : ShipModule
+public class ShipShieldModule : ShipModule<ShieldShipScriptable>
 {
     //setup
     [field: SerializeField] public int Priority {  get; set;}
-    public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as ShieldShipScriptable; }
-    [field: SerializeField] public ShieldShipScriptable Stats { get; private set; }
+    //public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as ShieldShipScriptable; }
 
     
 

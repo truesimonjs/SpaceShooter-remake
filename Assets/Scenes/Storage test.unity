@@ -197,11 +197,11 @@ PrefabInstance:
     - target: {fileID: 7503818712144819494, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: 'AllShipModuleSO.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: 229824e897601b74491874f477ff72ed, type: 2}
+      objectReference: {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
     - target: {fileID: 7503818712144819494, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: 'AllShipModuleSO.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 0c31b0cd385db994d9665ab3be7e2580, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -9,10 +9,6 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class ShipModuleMaster : MonoBehaviour
 {
-
-
-
-
     //
     public event EventHandler OnModuleChange;
     private ShipCore storageModule;

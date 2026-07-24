@@ -16,3 +16,10 @@ public abstract class ShipModule : MonoBehaviour
     }
 }
 
+public class ShipModule<StatType> : ShipModule
+    where StatType : ShipModuleScriptable
+{
+    public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as StatType; }
+    [field: SerializeField] public StatType Stats { get; protected set; }
+}
+

@@ -4,11 +4,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class StorageModule : ShipModule
+public class StorageModule : ShipModule<StorageSO>
 {
 
-    public override ShipModuleScriptable GenericStats { get => Stats; set => Stats = value as StorageSO; }
-    [field: SerializeField] public StorageSO Stats { get; private set; }
     public List<ShipModuleScriptable> modules = new();
     private void Awake()
     {
