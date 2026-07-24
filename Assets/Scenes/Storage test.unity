@@ -190,6 +190,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerShip
       objectReference: {fileID: 0}
+    - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: forwardMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: backwardMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: sidewardMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7503818712144819494, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: AllShipModuleSO.Array.size
       value: 5
@@ -202,7 +214,8 @@ PrefabInstance:
       propertyPath: 'AllShipModuleSO.Array.data[1]'
       value: 
       objectReference: {fileID: 11400000, guid: be22406b37cc5594abe0b0b6c080381f, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2434620368799779373, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
