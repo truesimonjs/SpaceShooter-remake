@@ -79,7 +79,7 @@ public class ShipCore : MonoBehaviour, IDamageModify
         get => shields;
         set
         {
-            value = Mathf.Clamp(value, 0, MaxShields);
+            value = value >MaxShields? MaxShields:value;
 
             if (value != shields)
             {
@@ -109,13 +109,15 @@ public class ShipCore : MonoBehaviour, IDamageModify
         if (Shields > 0)
         {
             damage = 0;
-
+            Debug.Log("shields was more than 0");
         }
         else
         {
+            Debug.Log(Shields);
             damage = -Shields;
             Shields = 0;
         }
+       
         return damage;
     }
 }

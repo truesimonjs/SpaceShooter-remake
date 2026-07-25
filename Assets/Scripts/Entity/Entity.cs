@@ -36,7 +36,8 @@ public class Entity : MonoBehaviour, IDamageable
     {
         if (dying) return;
         OnTakeDamage?.Invoke(this, EventArgs.Empty);
-       if(damageModify != null) damage = damageModify.TryTakeDamage(damage);
+        if (damageModify != null) damage = damageModify.TryTakeDamage(damage);
+        
         Health -= damage;
         if (Health <= 0) 
         {
