@@ -248,37 +248,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3266260986990183878, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: m_Mass
-      value: 1.4403983
-      objectReference: {fileID: 0}
     - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_Name
       value: Impact ship
       objectReference: {fileID: 0}
-    - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: upSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: downSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
-      propertyPath: sidewardSpeed
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

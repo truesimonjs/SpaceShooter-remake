@@ -10,16 +10,18 @@ public class PlayerController : MonoBehaviour
         if (ship == null) ship = GetComponent<ShipController>();
         guns = GetComponentsInChildren<Gun>();
         AudioListener.volume = 0f;
+        
     }
     void Update()
     {
-
-        Camera.main.transform.position = new Vector3(ship.transform.position.x, ship.transform.position.y, Camera.main.transform.position.z);
-        Camera.main.orthographicSize += -Input.GetAxis("Mouse ScrollWheel");
+        playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        bool pointAtMouse = playerMove.magnitude < 0.25 || Input.GetKey(KeyCode.Mouse1);
+        bool pointAtMouse = playerMove.magnitude < 0.25 || Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse0);
         ship.PointShip( pointAtMouse? mousePos:transform.position+(Vector3)playerMove);
+        ship.MoveShip(playerMove);
+
+        
         
 
         if (Input.GetKey(KeyCode.Mouse0))
@@ -44,12 +46,16 @@ public class PlayerController : MonoBehaviour
             Debug.Log("lshift presseed");
             GetComponentInChildren<ShipModuleMaster>().EngageModule("Boost");
         }
+        
+        
+
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
-        playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-        ship.MoveShip(playerMove);
+        Camera.main.transform.position = new Vector3(ship.transform.position.x, ship.transform.position.y, Camera.main.transform.position.z);
+        //Camera.main.transform.Translate(cameraMove*2*Time.fixedDeltaTime);
+        Camera.main.orthographicSize += -Input.GetAxis("Mouse ScrollWheel");
     }
-    
+
 
 }

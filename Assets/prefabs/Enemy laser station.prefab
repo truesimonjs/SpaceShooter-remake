@@ -212,6 +212,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipSpeed: 0
   rotationSpeed: 0
+  targetRotDebug: 0
+  upSpeed: 0
+  downSpeed: 0
+  sidewardSpeed: 0
 --- !u!50 &8472219200517790765
 Rigidbody2D:
   serializedVersion: 5
@@ -570,6 +574,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612a28b0e64d25a40ad34d3b92e135d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingCapacity: 1
+  storedModules: []
   <MaxEnergy>k__BackingField: 100
 --- !u!1001 &3399004725629796710
 PrefabInstance:

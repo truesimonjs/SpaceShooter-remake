@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BoostSkill : MonoBehaviour, ISkill
 {
-    [SerializeField] private float speed = 4;
+    [SerializeField] private float speed = 6;
     [SerializeField] private float rotationSpeed = 10;
     [SerializeField] private float duration = 0.5f;
     [SerializeField] float cooldown = 1f;
@@ -18,7 +18,7 @@ public class BoostSkill : MonoBehaviour, ISkill
     public void Initiate (ShipController _ship)
     {
         ship = _ship;
-        oldSpeed = ship.shipSpeed;
+        oldSpeed = ship.upSpeed;
         oldRotationSpeed = ship.rotationSpeed;
     }
     public void Activate()
@@ -30,10 +30,10 @@ public class BoostSkill : MonoBehaviour, ISkill
     {
         if (Time.time >= nextActivate) 
         {
-            ship.shipSpeed = speed;
+            ship.upSpeed = speed;
             ship.rotationSpeed = rotationSpeed;
             yield return new WaitForSeconds(duration);
-            ship.shipSpeed = oldSpeed;
+            ship.upSpeed = oldSpeed;
             ship.rotationSpeed = oldRotationSpeed;
             nextActivate = Time.time + cooldown;
         }

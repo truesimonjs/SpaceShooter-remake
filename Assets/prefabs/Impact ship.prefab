@@ -180,7 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipSpeed: 2
-  rotationSpeed: 360
+  rotationSpeed: 90
+  targetRotDebug: 0
+  upSpeed: 5
+  downSpeed: 0.1
+  sidewardSpeed: 1
 --- !u!58 &2818167961794432666
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -288,6 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612a28b0e64d25a40ad34d3b92e135d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingCapacity: 1
+  storedModules: []
   <MaxEnergy>k__BackingField: 100
 --- !u!1 &5026326469893646492
 GameObject:

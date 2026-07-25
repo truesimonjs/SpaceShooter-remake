@@ -21,12 +21,14 @@ public class ShipAi : MonoBehaviour
         }
         else
         {
+            ship.PointShip(lastKnownPos);
             ship.MoveTowards(lastKnownPos);
 
         }
     }
     protected virtual void Spotted()
     {
+        ship.PointShip(lastKnownPos);
         ship.MoveTowards(lastKnownPos);
     }
 

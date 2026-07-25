@@ -24,15 +24,17 @@ public class ShipController : MonoBehaviour
     {
         skills[keyword]?.Activate();
     }
-
-    public virtual void PointShip(Vector3 targetPos)
+    public float targetRotDebug;
+    public virtual bool PointShip(Vector3 targetPos)
     {
+      
         float originRot = transform.eulerAngles.z;
         float targetRot = RandomUtils.pointAt(transform.position, targetPos);
         float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed * Time.deltaTime);
-
         transform.eulerAngles = new Vector3(0, 0, result);
-
+        //rb.rotation = result;
+        //targetRotDebug = targetRot;
+        return targetRot == result;
     }
     
     public virtual void RotateShip(float targetRot)
@@ -63,7 +65,8 @@ public class ShipController : MonoBehaviour
          float maxXMultiplier = sidewardSpeed / Mathf.Abs(localDirection.x);
          float maxYmultiplier = (localDirection.y >0? upSpeed:downSpeed)/ Mathf.Abs(localDirection.y);
         
-        rb.linearVelocity = direction *Mathf.Min(maxXMultiplier, maxYmultiplier);
+        //rb.linearVelocity = direction * Mathf.Min(maxXMultiplier, maxYmultiplier);
+        transform.position += (Vector3)direction * Mathf.Min(maxXMultiplier, maxYmultiplier)*Time.deltaTime;
     }
 
 
@@ -76,7 +79,6 @@ public class ShipController : MonoBehaviour
         }
         else
         {
-            PointShip(destination);
             MoveShip(goal.normalized);
 
         }
