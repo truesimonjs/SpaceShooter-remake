@@ -47,7 +47,8 @@ public class ShipController : MonoBehaviour
     {
         rb.linearVelocity = Vector2.zero;
         if (direction.magnitude < 0.5f) return;
-        MoveShipDirectionalSpeeds(direction);
+        direction = direction.normalized;
+        MoveShipDirectionalSpeeds3(direction);
         return;
     
         rb.linearVelocity = direction.normalized * shipSpeed;
@@ -79,7 +80,7 @@ public class ShipController : MonoBehaviour
     public virtual void MoveShipDirectionalSpeeds2(Vector2 direction)
     {
     
-        direction = direction.normalized;
+        
         Vector2 movementVector = new Vector2(direction.x*sidewardMultiplier, direction.y >0? direction.y*forwardMultiplier:direction.y*backwardMultiplier);
         Vector2 localDirection = transform.worldToLocalMatrix * direction;
         float xLimit = localDirection.x != 0 ? sidewardMultiplier : Mathf.Infinity;
@@ -94,6 +95,23 @@ public class ShipController : MonoBehaviour
         xResultTest = rb.linearVelocity.x;
         yResultTest = rb.linearVelocity.y;
     }
+    public float maxXMultiplier;
+    public float maxYmultiplier;
+    public virtual void MoveShipDirectionalSpeeds3(Vector2 direction)
+    {
+        Vector2 localDirection = transform.worldToLocalMatrix * direction;
+        //localDirection = localDirection.normalized;
+        Debug.Log(localDirection.magnitude);
+         maxXMultiplier = sidewardMultiplier / Mathf.Abs(localDirection.x);
+         maxYmultiplier = (localDirection.y >0? forwardMultiplier:backwardMultiplier)/ Mathf.Abs(localDirection.y);
+        
+        rb.linearVelocity = direction *Mathf.Min(maxXMultiplier, maxYmultiplier);
+        speedResult = rb.linearVelocity.magnitude;
+        xResultTest = rb.linearVelocity.x;
+        yResultTest = rb.linearVelocity.y;
+    }
+
+
     public virtual void MoveTowards(Vector2 destination, float distance = 0.25f)
     {
         Vector3 goal = destination - (Vector2)transform.position;

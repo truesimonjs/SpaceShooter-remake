@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
-
+        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //ship.MoveTowards(mousePos, 0);
         Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         ship.MoveShip(playerMove);
     }
