@@ -12,7 +12,7 @@ public class RandomUtils : MonoBehaviour
 
         float result = 90 + (Mathf.Atan(triY / triX) * Mathf.Rad2Deg);
 
-        if (triX > 0) result += 180;
+        if (triX >= 0) result += 180;
         return result;
 
 

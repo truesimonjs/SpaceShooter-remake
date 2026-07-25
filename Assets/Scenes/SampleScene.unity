@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &181430973
 Transform:
   m_ObjectHideFlags: 0
@@ -258,15 +258,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: upSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: downSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: sidewardSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -489,6 +501,18 @@ PrefabInstance:
     - target: {fileID: 6719967761301423195, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: upSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: downSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7456155062057748798, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: sidewardSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -31,7 +31,7 @@ public class ShipController : MonoBehaviour
         float targetRot = RandomUtils.pointAt(transform.position, targetPos);
         float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed * Time.deltaTime);
 
-        //transform.eulerAngles = new Vector3(0, 0, result);
+        transform.eulerAngles = new Vector3(0, 0, result);
 
     }
     
@@ -48,67 +48,22 @@ public class ShipController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         if (direction.magnitude < 0.5f) return;
         direction = direction.normalized;
-        MoveShipDirectionalSpeeds3(direction);
+        MoveShipDirectionalSpeeds(direction);
         return;
     
-        rb.linearVelocity = direction.normalized * shipSpeed;
+        //rb.linearVelocity = direction.normalized * shipSpeed;
     }
-    public float forwardMultiplier = 1.2f;
-    public float backwardMultiplier = .5f;
-    public float sidewardMultiplier = .7f;
-    public float speedResult;
-    public float yResultTest;
-    public float xResultTest;
-    public float speedMultiplierTest;
+    public float upSpeed = 5f;
+    public float downSpeed = 1f;
+    public float sidewardSpeed = 3f;
     public virtual void MoveShipDirectionalSpeeds(Vector2 direction)
     {
-        
-    
-        direction = direction.normalized;
-        //
-        float dotResult = Vector3.Dot(direction, transform.up);
-        Debug.Log(Vector3.Dot(transform.up, direction));
-        float speedMultiplier = (dotResult >= 0) ? Mathf.Lerp(sidewardMultiplier, forwardMultiplier, dotResult) : Mathf.Lerp(sidewardMultiplier, backwardMultiplier, Mathf.Abs(dotResult));
-        Vector2 movementVector = direction * speedMultiplier;
-        speedResult = movementVector.magnitude;
-        rb.linearVelocity = movementVector;
-        yResultTest = movementVector.y;
-        xResultTest = movementVector.x;
-        speedMultiplierTest = speedMultiplier;
-    
-    }
-    public virtual void MoveShipDirectionalSpeeds2(Vector2 direction)
-    {
-    
-        
-        Vector2 movementVector = new Vector2(direction.x*sidewardMultiplier, direction.y >0? direction.y*forwardMultiplier:direction.y*backwardMultiplier);
         Vector2 localDirection = transform.worldToLocalMatrix * direction;
-        float xLimit = localDirection.x != 0 ? sidewardMultiplier : Mathf.Infinity;
-        float yLimit;
-        if (localDirection.y > 0) yLimit = forwardMultiplier;
-        else if (localDirection.y == 0) yLimit = Mathf.Infinity;
-        else yLimit = backwardMultiplier;
-        float speedMultiplier = Mathf.Min(xLimit, yLimit);
-        //rb.linearVelocity = transform.localToWorldMatrix* movementVector;
-        rb.linearVelocity = direction * speedMultiplier;
-        speedResult = rb.linearVelocity.magnitude;
-        xResultTest = rb.linearVelocity.x;
-        yResultTest = rb.linearVelocity.y;
-    }
-    public float maxXMultiplier;
-    public float maxYmultiplier;
-    public virtual void MoveShipDirectionalSpeeds3(Vector2 direction)
-    {
-        Vector2 localDirection = transform.worldToLocalMatrix * direction;
-        //localDirection = localDirection.normalized;
-        Debug.Log(localDirection.magnitude);
-         maxXMultiplier = sidewardMultiplier / Mathf.Abs(localDirection.x);
-         maxYmultiplier = (localDirection.y >0? forwardMultiplier:backwardMultiplier)/ Mathf.Abs(localDirection.y);
+        // max multiplier: what would you need to multiply the vector with to have that axis hit its top speed?
+         float maxXMultiplier = sidewardSpeed / Mathf.Abs(localDirection.x);
+         float maxYmultiplier = (localDirection.y >0? upSpeed:downSpeed)/ Mathf.Abs(localDirection.y);
         
         rb.linearVelocity = direction *Mathf.Min(maxXMultiplier, maxYmultiplier);
-        speedResult = rb.linearVelocity.magnitude;
-        xResultTest = rb.linearVelocity.x;
-        yResultTest = rb.linearVelocity.y;
     }
 
 

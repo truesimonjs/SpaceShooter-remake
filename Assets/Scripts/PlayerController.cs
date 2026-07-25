@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     private ShipController ship;
     private Gun[] guns;
+    private Vector2 playerMove;
     private void Start()
     {
         if (ship == null) ship = GetComponent<ShipController>();
@@ -17,7 +18,9 @@ public class PlayerController : MonoBehaviour
         Camera.main.orthographicSize += -Input.GetAxis("Mouse ScrollWheel");
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        ship.PointShip(mousePos);
+        bool pointAtMouse = playerMove.magnitude < 0.25 || Input.GetKey(KeyCode.Mouse1);
+        ship.PointShip( pointAtMouse? mousePos:transform.position+(Vector3)playerMove);
+        
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -44,9 +47,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        //Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //ship.MoveTowards(mousePos, 0);
-        Vector2 playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        playerMove = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         ship.MoveShip(playerMove);
     }
     

@@ -20,11 +20,12 @@ public class ImpactShipAi : ShipAi
 
     protected override void Spotted()
     {
-        ship.PointShip(lastKnownPos);
-        ship.MoveShip(transform.up);
+        //ship.PointShip(lastKnownPos);
+        //ship.MoveShip(transform.up);
+        ship.MoveTowards(lastKnownPos, 0);
         if (Vector3.Distance(lastKnownPos, transform.position) < boostDistance)
         {
-            ship.ActivateSkill("Boost");
+            //ship.ActivateSkill("Boost");
         }
     }
 }
