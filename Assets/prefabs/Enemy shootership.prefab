@@ -359,6 +359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612a28b0e64d25a40ad34d3b92e135d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingCapacity: 1
+  storedModules: []
   <MaxEnergy>k__BackingField: 100
 --- !u!114 &235497894932791571
 MonoBehaviour:
@@ -493,6 +495,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipSpeed: 1.5
   rotationSpeed: 360
+  targetRotDebug: 0
+  upSpeed: 2.5
+  downSpeed: 0.5
+  sidewardSpeed: 1.5
 --- !u!50 &8420679564615694373
 Rigidbody2D:
   serializedVersion: 5
