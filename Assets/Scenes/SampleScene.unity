@@ -248,21 +248,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3266260986990183878, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: m_Mass
+      value: 1.4403982
+      objectReference: {fileID: 0}
     - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_Name
       value: Impact ship
       objectReference: {fileID: 0}
     - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: upSpeed
+      value: 4.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -822,13 +830,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy shootership
       objectReference: {fileID: 0}
-    - target: {fileID: 4588491936273423635, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 3720899003650112843, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4588491936273423635, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588491936273423635, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7999530042624575227, guid: 8cf7cb45e8af7aa498a83c1b27de6fc8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1229,7 +1241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2327489094893461769, guid: 4be824615da240c4a9adbdb4c3a6d48f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8472219200517790765, guid: 4be824615da240c4a9adbdb4c3a6d48f, type: 3}
       propertyPath: m_Constraints
@@ -1237,11 +1249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9049646925890305037, guid: 4be824615da240c4a9adbdb4c3a6d48f, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9049646925890305037, guid: 4be824615da240c4a9adbdb4c3a6d48f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

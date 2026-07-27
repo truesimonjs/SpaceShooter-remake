@@ -36,30 +36,13 @@ public class ShipController : MonoBehaviour
         //targetRotDebug = targetRot;
         return targetRot == result;
     }
-    
-    public virtual void RotateShip(float targetRot)
-    {
-        float originRot = transform.eulerAngles.z;
-        float result = Mathf.MoveTowardsAngle(originRot, targetRot, rotationSpeed * Time.deltaTime);
-
-        transform.Rotate(Vector3.forward * result);
-
-    }
-    public virtual void MoveShip(Vector2 direction)
-    {
-        rb.linearVelocity = Vector2.zero;
-        if (direction.magnitude < 0.5f) return;
-        direction = direction.normalized;
-        MoveShipDirectionalSpeeds(direction);
-        return;
-    
-        //rb.linearVelocity = direction.normalized * shipSpeed;
-    }
     public float upSpeed = 5f;
     public float downSpeed = 1f;
     public float sidewardSpeed = 3f;
-    public virtual void MoveShipDirectionalSpeeds(Vector2 direction)
+    public virtual void MoveShip(Vector2 direction)
     {
+        if (direction.magnitude < 0.5f) return;
+        direction = direction.normalized;
         Vector2 localDirection = transform.worldToLocalMatrix * direction;
         // max multiplier: what would you need to multiply the vector with to have that axis hit its top speed?
          float maxXMultiplier = sidewardSpeed / Mathf.Abs(localDirection.x);

@@ -25,7 +25,6 @@ public class ShipCore : MonoBehaviour, IDamageModify
 
     private void ModuleMaster_OnModuleChange(object sender, EventArgs e)
     {
-        Debug.Log("e");
         MaxShieldUpdate();
         StorageCapacityUpdate();
     }
@@ -109,11 +108,9 @@ public class ShipCore : MonoBehaviour, IDamageModify
         if (Shields > 0)
         {
             damage = 0;
-            Debug.Log("shields was more than 0");
         }
         else
         {
-            Debug.Log(Shields);
             damage = -Shields;
             Shields = 0;
         }

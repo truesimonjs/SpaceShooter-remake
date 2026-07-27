@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Debug.Log("lshift presseed");
+            Debug.Log("lshift presseed",this);
             GetComponentInChildren<ShipModuleMaster>().EngageModule("Boost");
         }
         
