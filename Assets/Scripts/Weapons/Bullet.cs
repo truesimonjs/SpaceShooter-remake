@@ -4,6 +4,7 @@ public class Bullet : MonoBehaviour
 {
     Vector3 origin;
     public GameObject owner;
+    public float range = 50;
     private void Start()
     {
         origin = transform.position;
