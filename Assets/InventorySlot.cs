@@ -12,8 +12,14 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         set 
         {
             if (transform.childCount == 0) return;
-            if (value != null)transform.GetChild(0).GetComponent<Image>().sprite = value.icon;
-            transform.GetChild(0).GetComponent<Image>().color = Color.red;
+            if (value != null)
+            {
+                transform.GetChild(0).GetComponent<Image>().sprite = value.icon;
+                transform.GetChild(0).GetComponent<Image>().color = value.icon== null? Color.red: Color.white; 
+            }
+                
+                
+           
         } 
     }
     private void Start()

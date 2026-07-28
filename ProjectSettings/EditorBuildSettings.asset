@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Default.unity
     guid: 5eb322600a674b44295a72f516aaf565
   - enabled: 0
-    path: Assets/Scenes/Storage test.unity
+    path: Assets/Scenes/Testing scene.unity
     guid: 11b354c9a0c638046aa78c21de8d3cce
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

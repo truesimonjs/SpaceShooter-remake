@@ -18,7 +18,7 @@ public class TouchDamage : MonoBehaviour
         ShipController othersShipcontroller = collision.rigidbody.gameObject.GetComponent<ShipController>();
         if (othersShipcontroller != null) othersShipcontroller.TakeKnockback(transform.position);
         ShipController myShipController = GetComponent<ShipController>();
-        myShipController.TakeKnockback(collision.rigidbody.position);
+        if (myShipController != null)myShipController.TakeKnockback(collision.rigidbody.position);
         if (selfDamage > 0)
         {
             GetComponent<IDamageable>().TakeDamage(selfDamage);

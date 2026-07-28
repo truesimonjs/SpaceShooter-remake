@@ -5,8 +5,6 @@ public class BoostModuleSO : ShipModuleScriptable
 {
     public override Type Type => typeof (BoostModule);
     public float speed = 4;
-    public float rotationSpeed = 10;
-    public float duration = 2f;
-    public float cooldown = 3f;
+    public float energyCost = 2;
 
 }

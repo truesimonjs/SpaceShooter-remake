@@ -62,11 +62,18 @@ public class ShipCore : MonoBehaviour, IDamageModify
     public bool ChangeEnergyBool(float value)
     {
         float oldValue = energy;
-        bool hasEnough = MaxEnergy >= energy + value && energy + value >= 0;
+        bool hasEnough = CheckEnergy(value);
         if (!hasEnough) return false;
         energy += value;
         OnEnergyChange?.Invoke(this, EventArgs.Empty);
         return true;
+
+    }
+    public bool CheckEnergy(float value)
+    {
+        float oldValue = energy;
+        bool hasEnough = MaxEnergy >= energy + value && energy + value >= 0;
+        return hasEnough;
 
     }
     //shields

@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Basic Booster
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  speed: 4
-  rotationSpeed: 10
-  duration: 2
-  cooldown: 3
+  speed: 7
+  energyCost: 2
