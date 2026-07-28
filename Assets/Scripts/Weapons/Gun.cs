@@ -25,7 +25,7 @@ public class Gun : MonoBehaviour
     public void Shoot(Vector3 targetPos)
     {
         if (!enabled) return;
-        if (Time.time < fireCD) return; ;
+        if (Time.time < nextFire) return; ;
         FireBullet(targetPos);
         nextFire = Time.time + fireCD;
         if (audioSource != null) audioSource.Play();
@@ -38,7 +38,7 @@ public class Gun : MonoBehaviour
         float rotation = Mathf.MoveTowardsAngle(transform.parent.eulerAngles.z, targetRotation, maxAngle);
         transform.eulerAngles = new Vector3(0, 0, rotation);
         Bullet bullet = SpawnBullet();
-        bullet.GetComponent<Rigidbody2D>().AddForce(transform.up * bulletSpeed, ForceMode2D.Impulse);
+        bullet.Move(bullet.transform.up, bulletSpeed);
     }
     protected virtual Bullet SpawnBullet ()
     {

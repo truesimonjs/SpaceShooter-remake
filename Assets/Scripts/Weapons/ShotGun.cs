@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StationGun : Gun
+public class ShotGun : Gun
 {
     [SerializeField]protected int bulletAmount = 6;
     [SerializeField]protected float spreadPerBullet = 30;
@@ -17,7 +17,7 @@ public class StationGun : Gun
             float spread = -bulletAmount*spreadPerBullet/2 + i * spreadPerBullet;
             Bullet bullet = SpawnBullet();
             bullet.transform.Rotate(Vector3.forward * spread);
-            bullet.GetComponent<Rigidbody2D>().AddForce(bullet.transform.up * bulletSpeed, ForceMode2D.Impulse);
+            bullet.Move(bullet.transform.up, bulletSpeed);
         }
      
     }

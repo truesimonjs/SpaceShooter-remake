@@ -14,6 +14,10 @@ public class Bullet : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, origin) > 50) Destroy(gameObject);
     }
+    public void Move(Vector2 direction, float speed)
+    {
+        GetComponent<Rigidbody>().AddForce(direction.normalized * speed, ForceMode.Impulse);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,8 +31,6 @@ public class Bullet : MonoBehaviour
         Damageable.TakeDamage();
 
         Destroy(gameObject);
-
-
 
     }
 
