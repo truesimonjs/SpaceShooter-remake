@@ -26,6 +26,9 @@ public class ShipController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+
+        if (knockbackTimer > Time.time) return;
+
         ShipRotationUpdate();
         ShipMovementUpdate();
     }
@@ -34,9 +37,11 @@ public class ShipController : MonoBehaviour
        
         float originRot = transform.eulerAngles.z;
         float result = Mathf.MoveTowardsAngle(originRot, targetRotation, rotationSpeed * Time.deltaTime);
-        //transform.eulerAngles = new Vector3(0, 0, result);
         rb.rotation = result;
     }
+    public float upSpeed = 5f;
+    public float downSpeed = 1f;
+    public float sidewardSpeed = 3f;
     private void ShipMovementUpdate()
     {
         Vector2 direction = targetVelocity;
@@ -47,13 +52,13 @@ public class ShipController : MonoBehaviour
         }
         direction = direction.normalized;
         Vector2 localDirection = transform.worldToLocalMatrix * direction;
-        // max multiplier: what would you need to multiply the vector with to have that axis hit its top speed?
+        // max multiplier = what would you need to multiply the vector with to have that axis hit its top speed?
         float maxXMultiplier = sidewardSpeed / Mathf.Abs(localDirection.x);
         float maxYmultiplier = (localDirection.y > 0 ? upSpeed : downSpeed) / Mathf.Abs(localDirection.y);
         rb.linearVelocity = direction * Mathf.Min(maxXMultiplier, maxYmultiplier);
-       // rb.linearVelocity = Vector2.zero;
-        //transform.position += (Vector3)direction * Mathf.Min(maxXMultiplier, maxYmultiplier) * Time.deltaTime;
     }
+
+    //
     public void ActivateSkill(string keyword)
     {
         skills[keyword]?.Activate();
@@ -67,15 +72,13 @@ public class ShipController : MonoBehaviour
         float rotationDiff = (targetRotation-originRot);
         return Mathf.Abs(rotationDiff)<rotationTolerance;
     }
-    public float upSpeed = 5f;
-    public float downSpeed = 1f;
-    public float sidewardSpeed = 3f;
     public virtual void MoveShip(Vector2 direction)
     {
         
         if (direction.magnitude < 0.5f) targetVelocity = Vector2.zero;
         else targetVelocity = direction;
     }
+    
 
 
     public virtual void MoveTowards(Vector2 destination, float distance = 0.25f)
@@ -90,6 +93,15 @@ public class ShipController : MonoBehaviour
             MoveShip(goal.normalized);
 
         }
+    }
+    private float knockbackTimer;
+    public void TakeKnockback(Vector2 origin)
+    {
+        const float duration = 0.5f;
+        knockbackTimer = Time.time + duration;
+        Vector2 direction = (Vector2)transform.position - origin;
+        rb.AddForce(direction, ForceMode2D.Impulse);
+
     }
 }
 

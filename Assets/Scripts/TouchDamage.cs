@@ -11,10 +11,14 @@ public class TouchDamage : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (nextDamage > Time.time) return;
-        IDamageable Damageable = collision.gameObject.GetComponent<IDamageable>();
+        IDamageable Damageable = collision.rigidbody.gameObject.GetComponent<IDamageable>();
         if (Damageable == null) return;
         Damageable.TakeDamage(damage);
         nextDamage = Time.time + attackCD;
+        ShipController othersShipcontroller = collision.rigidbody.gameObject.GetComponent<ShipController>();
+        if (othersShipcontroller != null) othersShipcontroller.TakeKnockback(transform.position);
+        ShipController myShipController = GetComponent<ShipController>();
+        myShipController.TakeKnockback(collision.rigidbody.position);
         if (selfDamage > 0)
         {
             GetComponent<IDamageable>().TakeDamage(selfDamage);

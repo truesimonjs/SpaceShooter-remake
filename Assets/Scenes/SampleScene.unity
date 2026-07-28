@@ -250,7 +250,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3266260986990183878, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_Mass
-      value: 1.4403982
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3266260986990183878, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_Name
@@ -258,15 +262,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4016573422838669101, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8799113990916906391, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8845432405810457479, guid: 362d619e6c4ddc546a8d625bb29a2585, type: 3}
       propertyPath: upSpeed
@@ -446,6 +450,14 @@ PrefabInstance:
       propertyPath: shootSound
       value: 
       objectReference: {fileID: 8300000, guid: 777a511aa7660f04bb16710be9cd286b, type: 3}
+    - target: {fileID: 5119326736664512229, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5119326736664512229, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5507723784980701776, guid: 46f951d876f7d2a45b56c3eb8b86855c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.24
